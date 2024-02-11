@@ -92,6 +92,25 @@ pub struct MsgUndelegateFromValidatorSet {
 pub struct MsgUndelegateFromValidatorSetResponse {}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUndelegateFromRebalancedValidatorSet {
+    /// delegator is the user who is trying to undelegate.
+    #[prost(string, tag = "1")]
+    pub delegator: ::prost::alloc::string::String,
+    /// the amount the user wants to undelegate
+    /// For ex: Undelegate 50 osmo with validator-set {ValA -> 0.5, ValB -> 0.5}
+    /// Our undelegate logic would first check the current delegation balance.
+    /// If the user has 90 osmo delegated to ValA and 10 osmo delegated to ValB,
+    /// the rebalanced validator set would be {ValA -> 0.9, ValB -> 0.1}
+    /// So now the 45 osmo would be undelegated from ValA and 5 osmo would be
+    /// undelegated from ValB.
+    #[prost(message, optional, tag = "2")]
+    pub coin: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgUndelegateFromRebalancedValidatorSetResponse {}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRedelegateValidatorSet {
     /// delegator is the user who is trying to create a validator-set.
     #[prost(string, tag = "1")]
@@ -131,5 +150,4 @@ pub struct MsgDelegateBondedTokens {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegateBondedTokensResponse {}
-include!("osmosis.valsetpref.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

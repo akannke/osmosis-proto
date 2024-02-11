@@ -20,7 +20,7 @@ pub struct Params {
     pub balancer_shares_reward_discount: ::prost::alloc::string::String,
     /// authorized_quote_denoms is a list of quote denoms that can be used as
     /// token1 when creating a pool. We limit the quote assets to a small set for
-    /// the purposes of having convinient price increments stemming from tick to
+    /// the purposes of having convenient price increments stemming from tick to
     /// price conversion. These increments are in a human readable magnitude only
     /// for token1 as a quote. For limit orders in the future, this will be a
     /// desirable property in terms of UX as to allow users to set limit orders at
@@ -36,5 +36,14 @@ pub struct Params {
     /// with a governance proposal.
     #[prost(bool, tag = "6")]
     pub is_permissionless_pool_creation_enabled: bool,
+    /// unrestricted_pool_creator_whitelist is a list of addresses that are
+    /// allowed to bypass restrictions on permissionless supercharged pool
+    /// creation, like pool_creation_enabled, restricted quote assets, no
+    /// double creation of pools, etc.
+    #[prost(string, repeated, tag = "7")]
+    pub unrestricted_pool_creator_whitelist:
+        ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(uint64, tag = "8")]
+    pub hook_gas_limit: u64,
 }
 // @@protoc_insertion_point(module)

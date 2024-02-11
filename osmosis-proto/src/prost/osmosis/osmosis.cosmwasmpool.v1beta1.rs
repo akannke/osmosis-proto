@@ -226,6 +226,22 @@ pub struct SwapExactAmountOutSudoMsgResponse {
     #[prost(string, tag = "1")]
     pub token_in_amount: ::prost::alloc::string::String,
 }
+/// CosmWasmPool represents the data serialized into state for each CW pool.
+///
+/// Note: CW Pool has 2 pool models:
+/// - CosmWasmPool which is a proto-generated store model used for serialization
+/// into state.
+/// - Pool struct that encapsulates the CosmWasmPool and wasmKeeper for calling
+/// the contract.
+///
+/// CosmWasmPool implements the poolmanager.PoolI interface but it panics on all
+/// methods. The reason is that access to wasmKeeper is required to call the
+/// contract.
+///
+/// Instead, all interactions and poolmanager.PoolI methods are to be performed
+/// on the Pool struct. The reason why we cannot have a Pool struct only is
+/// because it cannot be serialized into state due to having a non-serializable
+/// wasmKeeper field.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CosmWasmPool {
@@ -242,7 +258,7 @@ pub struct CosmWasmPool {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetSwapFeeQueryMsg {
-    /// get_swap_fee is the query strcuture to get swap fee.
+    /// get_swap_fee is the query structure to get swap fee.
     #[prost(message, optional, tag = "1")]
     pub get_swap_fee: ::core::option::Option<EmptyStruct>,
 }
@@ -409,5 +425,4 @@ pub struct ContractInfoByPoolIdResponse {
     #[prost(uint64, tag = "2")]
     pub code_id: u64,
 }
-include!("osmosis.cosmwasmpool.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

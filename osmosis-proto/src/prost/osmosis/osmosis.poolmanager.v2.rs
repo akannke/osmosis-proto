@@ -1,8 +1,9 @@
 // @generated
-/// Deprecated: please use alternate in x/poolmanager
+/// SpotPriceRequest defines the gRPC request structure for a SpotPrice
+/// query.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct QuerySpotPriceRequest {
+pub struct SpotPriceRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
     #[prost(string, tag = "2")]
@@ -10,11 +11,12 @@ pub struct QuerySpotPriceRequest {
     #[prost(string, tag = "3")]
     pub quote_asset_denom: ::prost::alloc::string::String,
 }
-/// Deprecated: please use alternate in x/poolmanager
+/// SpotPriceResponse defines the gRPC response structure for a SpotPrice
+/// query.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct QuerySpotPriceResponse {
-    /// String of the Dec. Ex) 10.203uatom
+pub struct SpotPriceResponse {
+    /// String of the BigDec. Ex) 10.203uatom
     #[prost(string, tag = "1")]
     pub spot_price: ::prost::alloc::string::String,
 }

@@ -21,7 +21,7 @@ use {
 static QUIET: AtomicBool = AtomicBool::new(false);
 
 /// The Osmosis commit or tag to be cloned and used to build the proto files
-const OSMOSIS_REV: &str = "v18.0.0";
+const OSMOSIS_REV: &str = "v22.0.3";
 
 // All paths must end with a / and either be absolute or include a ./ to reference the current
 // working directory.
@@ -105,15 +105,13 @@ fn run_cmd(cmd: impl AsRef<OsStr>, args: impl IntoIterator<Item = impl AsRef<OsS
         process::Stdio::inherit()
     };
 
-    let exit_status = process::Command::new(&cmd)
-        .args(args)
-        .stdout(stdout)
-        .status()
-        .unwrap_or_else(|e| match e.kind() {
-            io::ErrorKind::NotFound => panic!(
-                "error running '{:?}': command not found. Is it installed?",
-                cmd.as_ref()
-            ),
+    let exit_status =
+        process::Command::new(&cmd).args(args).stdout(stdout).status().unwrap_or_else(|e| match e
+            .kind()
+        {
+            io::ErrorKind::NotFound => {
+                panic!("error running '{:?}': command not found. Is it installed?", cmd.as_ref())
+            },
             _ => panic!("error running '{:?}': {:?}", cmd.as_ref(), e),
         });
 
@@ -147,10 +145,7 @@ fn run_git(args: impl IntoIterator<Item = impl AsRef<OsStr>>) {
 fn run_rustfmt(dir: &Path) {
     info!("Running rustfmt on prost/tonic-generated code");
 
-    let mut args = ["--edition", "2021"]
-        .iter()
-        .map(Into::into)
-        .collect::<Vec<OsString>>();
+    let mut args = ["--edition", "2021"].iter().map(Into::into).collect::<Vec<OsString>>();
 
     args.extend(
         WalkDir::new(dir)

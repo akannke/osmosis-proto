@@ -80,5 +80,4 @@ pub struct QueryCurrentEpochResponse {
     #[prost(int64, tag = "1")]
     pub current_epoch: i64,
 }
-include!("osmosis.epochs.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

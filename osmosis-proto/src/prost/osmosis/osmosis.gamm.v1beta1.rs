@@ -169,10 +169,10 @@ pub struct ReplaceMigrationRecordsProposal {
 // UpdateMigrationRecordsProposal is a gov Content type for updating the
 // migration records. If a UpdateMigrationRecordsProposal passes, all the
 // MigrationRecords in the proposals are edited. An existing
-// BalancerToConcentratedPoolLink is not overriden unless explicitly included in
-// the proposal. This differs from a ReplaceMigrationRecordsProposal because it
-// only does an in place update of the MigrationRecords for records explicitly
-// mentioned in the proposal.
+// BalancerToConcentratedPoolLink is not overridden unless explicitly included
+// in the proposal. This differs from a ReplaceMigrationRecordsProposal because
+// it only does an in place update of the MigrationRecords for records
+// explicitly mentioned in the proposal.
 
 // Lastly, if the clPoolId is set to 0, the BalancerToConcentratedPoolLink is
 // deleted
@@ -564,7 +564,7 @@ pub struct QuerySpotPriceRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolsWithFilterRequest {
-    /// String of the coins in single string seperated by comma. Ex)
+    /// String of the coins in single string separated by comma. Ex)
     /// 10uatom,100uosmo
     #[prost(string, tag = "1")]
     pub min_liquidity: ::prost::alloc::string::String,
@@ -663,5 +663,4 @@ pub struct QueryCfmmConcentratedPoolLinksResponse {
     #[prost(message, optional, tag = "1")]
     pub migration_records: ::core::option::Option<MigrationRecords>,
 }
-include!("osmosis.gamm.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

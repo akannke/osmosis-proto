@@ -26,5 +26,4 @@ pub struct ParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
-include!("osmosis.ibcratelimit.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

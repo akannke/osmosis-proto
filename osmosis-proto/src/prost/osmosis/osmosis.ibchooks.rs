@@ -29,5 +29,4 @@ pub struct MsgEmitIbcAckResponse {
     #[prost(string, tag = "2")]
     pub ibc_ack: ::prost::alloc::string::String,
 }
-include!("osmosis.ibchooks.tonic.rs");
 // @@protoc_insertion_point(module)

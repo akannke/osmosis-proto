@@ -28,10 +28,10 @@ pub struct SuperfluidIntermediaryAccount {
 /// The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
 /// treat an LP share as having, for all of epoch N. Eventually this is intended
 /// to be set as the Time-weighted-average-osmo-backing for the entire duration
-/// of epoch N-1. (Thereby locking whats in use for epoch N as based on the prior
-/// epochs rewards) However for now, this is not the TWAP but instead the spot
-/// price at the boundary. For different types of assets in the future, it could
-/// change.
+/// of epoch N-1. (Thereby locking what's in use for epoch N as based on the
+/// prior epochs rewards) However for now, this is not the TWAP but instead the
+/// spot price at the boundary. For different types of assets in the future, it
+/// could change.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct OsmoEquivalentMultiplierRecord {
@@ -407,6 +407,20 @@ pub struct UserConcentratedSuperfluidPositionsUndelegatingResponse {
     #[prost(message, repeated, tag = "1")]
     pub cl_pool_user_position_records: ::prost::alloc::vec::Vec<ConcentratedPoolUserPositionRecord>,
 }
+/// THIS QUERY IS TEMPORARY
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRestSupplyRequest {
+    #[prost(string, tag = "1")]
+    pub denom: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRestSupplyResponse {
+    /// amount is the supply of the coin.
+    #[prost(message, optional, tag = "1")]
+    pub amount: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
+}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSuperfluidDelegate {
@@ -619,5 +633,4 @@ pub struct MsgUnbondConvertAndStakeResponse {
     #[prost(string, tag = "1")]
     pub total_amt_staked: ::prost::alloc::string::String,
 }
-include!("osmosis.superfluid.tonic.rs");
 // @@protoc_insertion_point(module)

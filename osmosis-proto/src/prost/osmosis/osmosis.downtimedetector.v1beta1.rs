@@ -127,5 +127,4 @@ pub struct RecoveredSinceDowntimeOfLengthResponse {
     #[prost(bool, tag = "1")]
     pub succesfully_recovered: bool,
 }
-include!("osmosis.downtimedetector.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

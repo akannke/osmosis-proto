@@ -36,7 +36,7 @@ pub struct TwapRecord {
     pub p1_arithmetic_twap_accumulator: ::prost::alloc::string::String,
     #[prost(string, tag = "10")]
     pub geometric_twap_accumulator: ::prost::alloc::string::String,
-    /// This field contains the time in which the last spot price error occured.
+    /// This field contains the time in which the last spot price error occurred.
     /// It is used to alert the caller if they are getting a potentially erroneous
     /// TWAP, due to an unforeseen underlying error.
     #[prost(message, optional, tag = "11")]
@@ -147,5 +147,4 @@ pub struct ParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
-include!("osmosis.twap.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

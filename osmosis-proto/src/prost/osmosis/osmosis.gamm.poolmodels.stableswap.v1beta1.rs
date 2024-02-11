@@ -87,5 +87,4 @@ pub struct MsgStableSwapAdjustScalingFactors {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStableSwapAdjustScalingFactorsResponse {}
-include!("osmosis.gamm.poolmodels.stableswap.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

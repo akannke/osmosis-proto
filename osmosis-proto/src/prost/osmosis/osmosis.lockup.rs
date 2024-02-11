@@ -89,6 +89,7 @@ pub enum LockQueryType {
     ByDuration = 0,
     ByTime = 1,
     NoLock = 2,
+    ByGroup = 3,
 }
 impl LockQueryType {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -100,6 +101,7 @@ impl LockQueryType {
             LockQueryType::ByDuration => "ByDuration",
             LockQueryType::ByTime => "ByTime",
             LockQueryType::NoLock => "NoLock",
+            LockQueryType::ByGroup => "ByGroup",
         }
     }
     /// Creates an enum from field names used in the ProtoBuf definition.
@@ -108,9 +110,16 @@ impl LockQueryType {
             "ByDuration" => Some(Self::ByDuration),
             "ByTime" => Some(Self::ByTime),
             "NoLock" => Some(Self::NoLock),
+            "ByGroup" => Some(Self::ByGroup),
             _ => None,
         }
     }
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Params {
+    #[prost(string, repeated, tag = "1")]
+    pub force_unlock_allowed_addresses: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// GenesisState defines the lockup module's genesis state.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -122,12 +131,8 @@ pub struct GenesisState {
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
     #[prost(message, repeated, tag = "3")]
     pub synthetic_locks: ::prost::alloc::vec::Vec<SyntheticLock>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Params {
-    #[prost(string, repeated, tag = "1")]
-    pub force_unlock_allowed_addresses: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(message, optional, tag = "4")]
+    pub params: ::core::option::Option<Params>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -481,5 +486,4 @@ pub struct MsgSetRewardReceiverAddressResponse {
     #[prost(bool, tag = "1")]
     pub success: bool,
 }
-include!("osmosis.lockup.tonic.rs");
 // @@protoc_insertion_point(module)

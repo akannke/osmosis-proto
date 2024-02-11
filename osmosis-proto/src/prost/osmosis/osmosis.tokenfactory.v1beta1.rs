@@ -30,7 +30,7 @@ pub struct Params {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
-    /// params defines the paramaters of the module.
+    /// params defines the parameters of the module.
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
     #[prost(message, repeated, tag = "2")]
@@ -132,7 +132,9 @@ pub struct MsgCreateDenomResponse {
     pub new_token_denom: ::prost::alloc::string::String,
 }
 /// MsgMint is the sdk.Msg type for allowing an admin account to mint
-/// more of a token.  For now, we only support minting to the sender account
+/// more of a token.
+/// Only the admin of the token factory denom has permission to mint unless
+/// the denom does not have any admin.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgMint {
@@ -147,7 +149,9 @@ pub struct MsgMint {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgMintResponse {}
 /// MsgBurn is the sdk.Msg type for allowing an admin account to burn
-/// a token.  For now, we only support burning from the sender account.
+/// a token.
+/// Only the admin of the token factory denom has permission to burn unless
+/// the denom does not have any admin.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBurn {
@@ -225,5 +229,4 @@ pub struct MsgForceTransfer {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgForceTransferResponse {}
-include!("osmosis.tokenfactory.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

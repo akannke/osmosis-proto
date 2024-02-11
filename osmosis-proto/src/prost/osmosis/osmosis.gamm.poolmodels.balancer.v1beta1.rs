@@ -19,5 +19,4 @@ pub struct MsgCreateBalancerPoolResponse {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-include!("osmosis.gamm.poolmodels.balancer.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

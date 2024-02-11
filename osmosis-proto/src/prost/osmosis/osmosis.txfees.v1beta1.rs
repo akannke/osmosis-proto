@@ -83,5 +83,13 @@ pub struct QueryBaseDenomResponse {
     #[prost(string, tag = "1")]
     pub base_denom: ::prost::alloc::string::String,
 }
-include!("osmosis.txfees.v1beta1.tonic.rs");
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryEipBaseFeeRequest {}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryEipBaseFeeResponse {
+    #[prost(string, tag = "1")]
+    pub base_fee: ::prost::alloc::string::String,
+}
 // @@protoc_insertion_point(module)

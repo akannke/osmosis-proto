@@ -187,7 +187,7 @@ pub struct GenesisState {
     /// params are all the parameters of the module
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<super::Params>,
-    /// pool data containining serialized pool struct and ticks.
+    /// pool data containing serialized pool struct and ticks.
     #[prost(message, repeated, tag = "2")]
     pub pool_data: ::prost::alloc::vec::Vec<PoolData>,
     #[prost(message, repeated, tag = "3")]
@@ -404,6 +404,8 @@ pub struct LiquidityNetInDirectionResponse {
     pub current_tick: i64,
     #[prost(string, tag = "3")]
     pub current_liquidity: ::prost::alloc::string::String,
+    #[prost(string, tag = "4")]
+    pub current_sqrt_price: ::prost::alloc::string::String,
 }
 /// =============================== LiquidityPerTickRange
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -417,6 +419,8 @@ pub struct LiquidityPerTickRangeRequest {
 pub struct LiquidityPerTickRangeResponse {
     #[prost(message, repeated, tag = "1")]
     pub liquidity: ::prost::alloc::vec::Vec<LiquidityDepthWithRange>,
+    #[prost(int64, tag = "2")]
+    pub bucket_index: i64,
 }
 /// ===================== QueryClaimableSpreadRewards
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -538,6 +542,27 @@ pub struct GetTotalLiquidityRequest {}
 pub struct GetTotalLiquidityResponse {
     #[prost(message, repeated, tag = "1")]
     pub total_liquidity: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
+}
+/// =============================== NumNextInitializedTicks
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct NumNextInitializedTicksRequest {
+    #[prost(uint64, tag = "1")]
+    pub pool_id: u64,
+    #[prost(string, tag = "2")]
+    pub token_in_denom: ::prost::alloc::string::String,
+    #[prost(uint64, tag = "3")]
+    pub num_next_initialized_ticks: u64,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct NumNextInitializedTicksResponse {
+    #[prost(message, repeated, tag = "1")]
+    pub liquidity_depths: ::prost::alloc::vec::Vec<TickLiquidityNet>,
+    #[prost(int64, tag = "2")]
+    pub current_tick: i64,
+    #[prost(string, tag = "3")]
+    pub current_liquidity: ::prost::alloc::string::String,
 }
 /// ===================== MsgCreatePosition
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -688,5 +713,18 @@ pub struct MsgFungifyChargedPositionsResponse {
     #[prost(uint64, tag = "1")]
     pub new_position_id: u64,
 }
-include!("osmosis.concentratedliquidity.v1beta1.tonic.rs");
+/// ===================== MsgTransferPositions
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgTransferPositions {
+    #[prost(uint64, repeated, packed = "false", tag = "1")]
+    pub position_ids: ::prost::alloc::vec::Vec<u64>,
+    #[prost(string, tag = "2")]
+    pub sender: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub new_owner: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgTransferPositionsResponse {}
 // @@protoc_insertion_point(module)

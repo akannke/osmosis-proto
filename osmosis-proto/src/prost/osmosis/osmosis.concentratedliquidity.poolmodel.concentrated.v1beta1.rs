@@ -21,5 +21,4 @@ pub struct MsgCreateConcentratedPoolResponse {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-include!("osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

@@ -17,7 +17,8 @@ pub struct TokenPairArbRoutes {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Route {
-    /// The pool IDs that are travered in the directed cyclic graph (traversed left
+    /// The pool IDs that are traversed in the directed cyclic graph (traversed
+    /// left
     /// -> right)
     #[prost(message, repeated, tag = "1")]
     pub trades: ::prost::alloc::vec::Vec<Trade>,
@@ -162,6 +163,23 @@ pub struct BaseDenom {
     #[prost(string, tag = "2")]
     pub step_size: ::prost::alloc::string::String,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AllProtocolRevenue {
+    #[prost(message, optional, tag = "1")]
+    pub taker_fees_tracker:
+        ::core::option::Option<super::super::poolmanager::v1beta1::TakerFeesTracker>,
+    #[prost(message, optional, tag = "3")]
+    pub cyclic_arb_tracker: ::core::option::Option<CyclicArbTracker>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CyclicArbTracker {
+    #[prost(message, repeated, tag = "1")]
+    pub cyclic_arb: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
+    #[prost(int64, tag = "2")]
+    pub height_accounting_starts_from: i64,
+}
 /// Params defines the parameters for the module.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -224,6 +242,8 @@ pub struct GenesisState {
     /// consumption of a swap on a given pool type.
     #[prost(message, optional, tag = "13")]
     pub info_by_pool_type: ::core::option::Option<InfoByPoolType>,
+    #[prost(message, optional, tag = "14")]
+    pub cyclic_arb_tracker: ::core::option::Option<CyclicArbTracker>,
 }
 /// SetProtoRevEnabledProposal is a gov Content type to update whether the
 /// protorev module is enabled
@@ -480,6 +500,15 @@ pub struct QueryGetProtoRevPoolResponse {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryGetAllProtocolRevenueRequest {}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryGetAllProtocolRevenueResponse {
+    #[prost(message, optional, tag = "1")]
+    pub all_protocol_revenue: ::core::option::Option<AllProtocolRevenue>,
+}
 /// MsgSetHotRoutes defines the Msg/SetHotRoutes request type.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -578,5 +607,4 @@ pub struct MsgSetBaseDenoms {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetBaseDenomsResponse {}
-include!("osmosis.protorev.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)
