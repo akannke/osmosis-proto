@@ -1,7 +1,6 @@
 // @generated
 /// SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
 /// assets
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SetSuperfluidAssetsProposal {
     #[prost(string, tag = "1")]
@@ -13,7 +12,6 @@ pub struct SetSuperfluidAssetsProposal {
 }
 /// RemoveSuperfluidAssetsProposal is a gov Content type to remove the superfluid
 /// assets by denom
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RemoveSuperfluidAssetsProposal {
     #[prost(string, tag = "1")]
@@ -25,7 +23,6 @@ pub struct RemoveSuperfluidAssetsProposal {
 }
 /// UpdateUnpoolWhiteListProposal is a gov Content type to update the
 /// allowed list of pool ids.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateUnpoolWhiteListProposal {
     #[prost(string, tag = "1")]

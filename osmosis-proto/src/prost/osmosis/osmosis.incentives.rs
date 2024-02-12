@@ -2,7 +2,6 @@
 /// Gauge is an object that stores and distributes yields to recipients who
 /// satisfy certain conditions. Currently gauges support conditions around the
 /// duration for which a given denom is locked.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Gauge {
     /// id is the unique ID of a Gauge
@@ -39,7 +38,6 @@ pub struct Gauge {
     pub distributed_coins:
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LockableDurationsInfo {
     /// List of incentivised durations that gauges will pay out to
@@ -47,7 +45,6 @@ pub struct LockableDurationsInfo {
     pub lockable_durations: ::prost::alloc::vec::Vec<::prost_types::Duration>,
 }
 /// Params holds parameters for the incentives module
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     /// distr_epoch_identifier is what epoch type distribution will be triggered by
@@ -77,7 +74,6 @@ pub struct Params {
 /// readable (pool-incentives distribution abstractions are used in a very
 /// specific way that does not directly relate to gauge logic). This also helps
 /// us sidestep a refactor to avoid an import cycle.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InternalGaugeInfo {
     #[prost(string, tag = "1")]
@@ -85,7 +81,6 @@ pub struct InternalGaugeInfo {
     #[prost(message, repeated, tag = "2")]
     pub gauge_records: ::prost::alloc::vec::Vec<InternalGaugeRecord>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InternalGaugeRecord {
     #[prost(uint64, tag = "1")]
@@ -105,7 +100,6 @@ pub struct InternalGaugeRecord {
 /// info, and a splitting policy. These are grouped into a single abstraction to
 /// allow for distribution of group incentives to internal gauges according to
 /// the specified splitting policy.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Group {
     #[prost(uint64, tag = "1")]
@@ -117,7 +111,6 @@ pub struct Group {
 }
 /// CreateGroup is called via governance to create a new group.
 /// It takes an array of pool IDs to split the incentives across.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateGroup {
     #[prost(uint64, repeated, tag = "1")]
@@ -125,7 +118,6 @@ pub struct CreateGroup {
 }
 /// GroupsWithGauge is a helper struct that stores a group and its
 /// associated gauge.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupsWithGauge {
     #[prost(message, optional, tag = "1")]
@@ -149,17 +141,9 @@ impl SplittingPolicy {
             SplittingPolicy::ByVolume => "ByVolume",
         }
     }
-    /// Creates an enum from field names used in the ProtoBuf definition.
-    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
-        match value {
-            "ByVolume" => Some(Self::ByVolume),
-            _ => None,
-        }
-    }
 }
 /// GenesisState defines the incentives module's various parameters when first
 /// initialized
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// params are all the parameters of the module
@@ -187,7 +171,6 @@ pub struct GenesisState {
 /// CreateGroupsProposal is a type for creating one or more groups via
 /// governance. This is useful for creating groups without having to pay
 /// creation fees.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateGroupsProposal {
     #[prost(string, tag = "1")]
@@ -197,31 +180,26 @@ pub struct CreateGroupsProposal {
     #[prost(message, repeated, tag = "3")]
     pub create_groups: ::prost::alloc::vec::Vec<CreateGroup>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleToDistributeCoinsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleToDistributeCoinsResponse {
     /// Coins that have yet to be distributed
     #[prost(message, repeated, tag = "1")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GaugeByIdRequest {
     /// Gague ID being queried
     #[prost(uint64, tag = "1")]
     pub id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GaugeByIdResponse {
     /// Gauge that corresponds to provided gague ID
     #[prost(message, optional, tag = "1")]
     pub gauge: ::core::option::Option<Gauge>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GaugesRequest {
     /// Pagination defines pagination for the request
@@ -229,7 +207,6 @@ pub struct GaugesRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GaugesResponse {
     /// Upcoming and active gauges
@@ -240,7 +217,6 @@ pub struct GaugesResponse {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ActiveGaugesRequest {
     /// Pagination defines pagination for the request
@@ -248,7 +224,6 @@ pub struct ActiveGaugesRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ActiveGaugesResponse {
     /// Active gagues only
@@ -259,7 +234,6 @@ pub struct ActiveGaugesResponse {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ActiveGaugesPerDenomRequest {
     /// Desired denom when querying active gagues
@@ -270,7 +244,6 @@ pub struct ActiveGaugesPerDenomRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ActiveGaugesPerDenomResponse {
     /// Active gagues that match denom in query
@@ -281,7 +254,6 @@ pub struct ActiveGaugesPerDenomResponse {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpcomingGaugesRequest {
     /// Pagination defines pagination for the request
@@ -289,7 +261,6 @@ pub struct UpcomingGaugesRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpcomingGaugesResponse {
     /// Gauges whose distribution is upcoming
@@ -300,7 +271,6 @@ pub struct UpcomingGaugesResponse {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpcomingGaugesPerDenomRequest {
     /// Filter for upcoming gagues that match specific denom
@@ -311,7 +281,6 @@ pub struct UpcomingGaugesPerDenomRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpcomingGaugesPerDenomResponse {
     /// Upcoming gagues that match denom in query
@@ -322,7 +291,6 @@ pub struct UpcomingGaugesPerDenomResponse {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RewardsEstRequest {
     /// Address that is being queried for future estimated rewards
@@ -336,7 +304,6 @@ pub struct RewardsEstRequest {
     #[prost(int64, tag = "3")]
     pub end_epoch: i64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RewardsEstResponse {
     /// Estimated coin rewards that will be received at provided address
@@ -344,68 +311,55 @@ pub struct RewardsEstResponse {
     #[prost(message, repeated, tag = "1")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryLockableDurationsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryLockableDurationsResponse {
     /// Time durations that users can lock coins for in order to receive rewards
     #[prost(message, repeated, tag = "1")]
     pub lockable_durations: ::prost::alloc::vec::Vec<::prost_types::Duration>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllGroupsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllGroupsResponse {
     #[prost(message, repeated, tag = "1")]
     pub groups: ::prost::alloc::vec::Vec<Group>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllGroupsGaugesRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllGroupsGaugesResponse {
     #[prost(message, repeated, tag = "1")]
     pub gauges: ::prost::alloc::vec::Vec<Gauge>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllGroupsWithGaugeRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryAllGroupsWithGaugeResponse {
     #[prost(message, repeated, tag = "1")]
     pub groups_with_gauge: ::prost::alloc::vec::Vec<GroupsWithGauge>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupByGroupGaugeIdRequest {
     #[prost(uint64, tag = "1")]
     pub id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGroupByGroupGaugeIdResponse {
     #[prost(message, optional, tag = "1")]
     pub group: ::core::option::Option<Group>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCurrentWeightByGroupGaugeIdRequest {
     #[prost(uint64, tag = "1")]
     pub group_gauge_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCurrentWeightByGroupGaugeIdResponse {
     #[prost(message, repeated, tag = "1")]
     pub gauge_weight: ::prost::alloc::vec::Vec<GaugeWeight>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GaugeWeight {
     #[prost(uint64, tag = "1")]
@@ -414,7 +368,6 @@ pub struct GaugeWeight {
     pub weight_ratio: ::prost::alloc::string::String,
 }
 /// MsgCreateGauge creates a gague to distribute rewards to users
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGauge {
     /// is_perpetual shows if it's a perpetual or non-perpetual gauge
@@ -451,11 +404,9 @@ pub struct MsgCreateGauge {
     #[prost(uint64, tag = "7")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGaugeResponse {}
 /// MsgAddToGauge adds coins to a previously created gauge
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAddToGauge {
     /// owner is the gauge owner's address
@@ -468,11 +419,9 @@ pub struct MsgAddToGauge {
     #[prost(message, repeated, tag = "3")]
     pub rewards: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAddToGaugeResponse {}
 /// MsgCreateGroup creates a group to distribute rewards to a group of pools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroup {
     /// coins are the provided coins that the group will distribute
@@ -489,11 +438,11 @@ pub struct MsgCreateGroup {
     #[prost(uint64, repeated, tag = "4")]
     pub pool_ids: ::prost::alloc::vec::Vec<u64>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateGroupResponse {
     /// group_id is the ID of the group that is created from this msg
     #[prost(uint64, tag = "1")]
     pub group_id: u64,
 }
+include!("osmosis.incentives.tonic.rs");
 // @@protoc_insertion_point(module)

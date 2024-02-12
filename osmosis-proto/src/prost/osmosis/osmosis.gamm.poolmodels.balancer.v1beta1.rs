@@ -1,6 +1,5 @@
 // @generated
 /// ===================== MsgCreatePool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateBalancerPool {
     #[prost(string, tag = "1")]
@@ -13,10 +12,10 @@ pub struct MsgCreateBalancerPool {
     pub future_pool_governor: ::prost::alloc::string::String,
 }
 /// Returns the poolID
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateBalancerPoolResponse {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
+include!("osmosis.gamm.poolmodels.balancer.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

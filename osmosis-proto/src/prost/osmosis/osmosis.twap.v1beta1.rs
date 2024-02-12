@@ -6,7 +6,6 @@
 /// given SDK today. Would rather we optimize for readability and correctness,
 /// than an optimal state storage format. The system bottleneck is elsewhere for
 /// now.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TwapRecord {
     #[prost(uint64, tag = "1")]
@@ -43,7 +42,6 @@ pub struct TwapRecord {
     pub last_error_time: ::core::option::Option<::prost_types::Timestamp>,
 }
 /// Params holds parameters for the twap module
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     #[prost(string, tag = "1")]
@@ -52,7 +50,6 @@ pub struct Params {
     pub record_history_keep_period: ::core::option::Option<::prost_types::Duration>,
 }
 /// GenesisState defines the twap module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// twaps is the collection of all twap records.
@@ -62,7 +59,6 @@ pub struct GenesisState {
     #[prost(message, optional, tag = "2")]
     pub params: ::core::option::Option<Params>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ArithmeticTwapRequest {
     #[prost(uint64, tag = "1")]
@@ -76,13 +72,11 @@ pub struct ArithmeticTwapRequest {
     #[prost(message, optional, tag = "5")]
     pub end_time: ::core::option::Option<::prost_types::Timestamp>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ArithmeticTwapResponse {
     #[prost(string, tag = "1")]
     pub arithmetic_twap: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ArithmeticTwapToNowRequest {
     #[prost(uint64, tag = "1")]
@@ -94,13 +88,11 @@ pub struct ArithmeticTwapToNowRequest {
     #[prost(message, optional, tag = "4")]
     pub start_time: ::core::option::Option<::prost_types::Timestamp>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ArithmeticTwapToNowResponse {
     #[prost(string, tag = "1")]
     pub arithmetic_twap: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GeometricTwapRequest {
     #[prost(uint64, tag = "1")]
@@ -114,13 +106,11 @@ pub struct GeometricTwapRequest {
     #[prost(message, optional, tag = "5")]
     pub end_time: ::core::option::Option<::prost_types::Timestamp>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GeometricTwapResponse {
     #[prost(string, tag = "1")]
     pub geometric_twap: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GeometricTwapToNowRequest {
     #[prost(uint64, tag = "1")]
@@ -132,19 +122,17 @@ pub struct GeometricTwapToNowRequest {
     #[prost(message, optional, tag = "4")]
     pub start_time: ::core::option::Option<::prost_types::Timestamp>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GeometricTwapToNowResponse {
     #[prost(string, tag = "1")]
     pub geometric_twap: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
+include!("osmosis.twap.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

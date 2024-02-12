@@ -2,7 +2,6 @@
 /// DenomAuthorityMetadata specifies metadata for addresses that have specific
 /// capabilities over a token factory denom. Right now there is only one Admin
 /// permission, but is planned to be extended to the future.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DenomAuthorityMetadata {
     /// Can be empty for no admin, or a valid osmosis address
@@ -10,7 +9,6 @@ pub struct DenomAuthorityMetadata {
     pub admin: ::prost::alloc::string::String,
 }
 /// Params defines the parameters for the tokenfactory module.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     /// DenomCreationFee defines the fee to be charged on the creation of a new
@@ -27,7 +25,6 @@ pub struct Params {
     pub denom_creation_gas_consume: u64,
 }
 /// GenesisState defines the tokenfactory module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// params defines the parameters of the module.
@@ -39,7 +36,6 @@ pub struct GenesisState {
 /// GenesisDenom defines a tokenfactory denom that is defined within genesis
 /// state. The structure contains DenomAuthorityMetadata which defines the
 /// denom's admin.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisDenom {
     #[prost(string, tag = "1")]
@@ -48,11 +44,9 @@ pub struct GenesisDenom {
     pub authority_metadata: ::core::option::Option<DenomAuthorityMetadata>,
 }
 /// QueryParamsRequest is the request type for the Query/Params RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
 /// QueryParamsResponse is the response type for the Query/Params RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
     /// params defines the parameters of the module.
@@ -61,7 +55,6 @@ pub struct QueryParamsResponse {
 }
 /// QueryDenomAuthorityMetadataRequest defines the request structure for the
 /// DenomAuthorityMetadata gRPC query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDenomAuthorityMetadataRequest {
     #[prost(string, tag = "1")]
@@ -69,7 +62,6 @@ pub struct QueryDenomAuthorityMetadataRequest {
 }
 /// QueryDenomAuthorityMetadataResponse defines the response structure for the
 /// DenomAuthorityMetadata gRPC query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDenomAuthorityMetadataResponse {
     #[prost(message, optional, tag = "1")]
@@ -77,7 +69,6 @@ pub struct QueryDenomAuthorityMetadataResponse {
 }
 /// QueryDenomsFromCreatorRequest defines the request structure for the
 /// DenomsFromCreator gRPC query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDenomsFromCreatorRequest {
     #[prost(string, tag = "1")]
@@ -85,13 +76,11 @@ pub struct QueryDenomsFromCreatorRequest {
 }
 /// QueryDenomsFromCreatorRequest defines the response structure for the
 /// DenomsFromCreator gRPC query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryDenomsFromCreatorResponse {
     #[prost(string, repeated, tag = "1")]
     pub denoms: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBeforeSendHookAddressRequest {
     #[prost(string, tag = "1")]
@@ -99,7 +88,6 @@ pub struct QueryBeforeSendHookAddressRequest {
 }
 /// QueryBeforeSendHookAddressResponse defines the response structure for the
 /// DenomBeforeSendHook gRPC query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryBeforeSendHookAddressResponse {
     #[prost(string, tag = "1")]
@@ -114,7 +102,6 @@ pub struct QueryBeforeSendHookAddressResponse {
 /// <factory/{creatorAddress}/{subdenom}>. The resulting denom's admin is
 /// originally set to be the creator, but this can be changed later. The token
 /// denom does not indicate the current admin.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateDenom {
     #[prost(string, tag = "1")]
@@ -125,7 +112,6 @@ pub struct MsgCreateDenom {
 }
 /// MsgCreateDenomResponse is the return value of MsgCreateDenom
 /// It returns the full string of the newly created denom
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateDenomResponse {
     #[prost(string, tag = "1")]
@@ -135,7 +121,6 @@ pub struct MsgCreateDenomResponse {
 /// more of a token.
 /// Only the admin of the token factory denom has permission to mint unless
 /// the denom does not have any admin.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgMint {
     #[prost(string, tag = "1")]
@@ -145,14 +130,12 @@ pub struct MsgMint {
     #[prost(string, tag = "3")]
     pub mint_to_address: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgMintResponse {}
 /// MsgBurn is the sdk.Msg type for allowing an admin account to burn
 /// a token.
 /// Only the admin of the token factory denom has permission to burn unless
 /// the denom does not have any admin.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBurn {
     #[prost(string, tag = "1")]
@@ -162,12 +145,10 @@ pub struct MsgBurn {
     #[prost(string, tag = "3")]
     pub burn_from_address: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBurnResponse {}
 /// MsgChangeAdmin is the sdk.Msg type for allowing an admin account to reassign
 /// adminship of a denom to a new account
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgChangeAdmin {
     #[prost(string, tag = "1")]
@@ -179,12 +160,10 @@ pub struct MsgChangeAdmin {
 }
 /// MsgChangeAdminResponse defines the response structure for an executed
 /// MsgChangeAdmin message.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgChangeAdminResponse {}
 /// MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
 /// assign a CosmWasm contract to call with a BeforeSend hook
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetBeforeSendHook {
     #[prost(string, tag = "1")]
@@ -196,12 +175,10 @@ pub struct MsgSetBeforeSendHook {
 }
 /// MsgSetBeforeSendHookResponse defines the response structure for an executed
 /// MsgSetBeforeSendHook message.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetBeforeSendHookResponse {}
 /// MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
 /// the denom's bank metadata
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetDenomMetadata {
     #[prost(string, tag = "1")]
@@ -211,10 +188,8 @@ pub struct MsgSetDenomMetadata {
 }
 /// MsgSetDenomMetadataResponse defines the response structure for an executed
 /// MsgSetDenomMetadata message.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetDenomMetadataResponse {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgForceTransfer {
     #[prost(string, tag = "1")]
@@ -226,7 +201,7 @@ pub struct MsgForceTransfer {
     #[prost(string, tag = "4")]
     pub transfer_to_address: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgForceTransferResponse {}
+include!("osmosis.tokenfactory.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

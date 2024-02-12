@@ -1,7 +1,6 @@
 // @generated
 /// SpotPriceRequest defines the gRPC request structure for a SpotPrice
 /// query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpotPriceRequest {
     #[prost(uint64, tag = "1")]
@@ -13,11 +12,11 @@ pub struct SpotPriceRequest {
 }
 /// SpotPriceResponse defines the gRPC response structure for a SpotPrice
 /// query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpotPriceResponse {
     /// String of the BigDec. Ex) 10.203uatom
     #[prost(string, tag = "1")]
     pub spot_price: ::prost::alloc::string::String,
 }
+include!("osmosis.poolmanager.v2.tonic.rs");
 // @@protoc_insertion_point(module)

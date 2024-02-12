@@ -1,6 +1,5 @@
 // @generated
 /// Deprecated: please use alternate in x/poolmanager
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySpotPriceRequest {
     #[prost(uint64, tag = "1")]
@@ -11,11 +10,11 @@ pub struct QuerySpotPriceRequest {
     pub quote_asset_denom: ::prost::alloc::string::String,
 }
 /// Deprecated: please use alternate in x/poolmanager
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySpotPriceResponse {
     /// String of the Dec. Ex) 10.203uatom
     #[prost(string, tag = "1")]
     pub spot_price: ::prost::alloc::string::String,
 }
+include!("osmosis.gamm.v2.tonic.rs");
 // @@protoc_insertion_point(module)

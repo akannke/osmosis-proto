@@ -10,7 +10,6 @@
 ///      w(t) = initial_pool_weights + (t - start_time) *
 ///        (target_pool_weights - initial_pool_weights) / (duration)
 ///    t > start_time + duration: w(t) = target_pool_weights
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SmoothWeightChangeParams {
     /// The start time for beginning the weight change.
@@ -47,7 +46,6 @@ pub struct SmoothWeightChangeParams {
 /// governance in the future. This params are not managed by the chain
 /// governance. Instead they will be managed by the token holders of the pool.
 /// The pool's token holders are specified in future_pool_governor.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolParams {
     #[prost(string, tag = "1")]
@@ -64,7 +62,6 @@ pub struct PoolParams {
 /// token in the pool, and its balancer weight.
 /// This is an awkward packaging of data,
 /// and should be revisited in a future state migration.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolAsset {
     /// Coins we are talking about,
@@ -75,7 +72,6 @@ pub struct PoolAsset {
     #[prost(string, tag = "2")]
     pub weight: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Pool {
     #[prost(string, tag = "1")]
@@ -108,7 +104,6 @@ pub struct Pool {
 }
 /// MigrationRecords contains all the links between balancer and concentrated
 /// pools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigrationRecords {
     #[prost(message, repeated, tag = "1")]
@@ -121,7 +116,6 @@ pub struct MigrationRecords {
 /// concentrated liquidity pool position
 /// A balancer pool can be linked to a maximum of one cl pool, and a cl pool can
 /// be linked to a maximum of one balancer pool.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BalancerToConcentratedPoolLink {
     #[prost(uint64, tag = "1")]
@@ -130,7 +124,6 @@ pub struct BalancerToConcentratedPoolLink {
     pub cl_pool_id: u64,
 }
 /// Params holds parameters for the incentives module
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     #[prost(message, repeated, tag = "1")]
@@ -138,7 +131,6 @@ pub struct Params {
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// GenesisState defines the gamm module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     #[prost(message, repeated, tag = "1")]
@@ -156,7 +148,6 @@ pub struct GenesisState {
 /// proposal’s records override the existing MigrationRecords set in the module.
 /// Each record specifies a single connection between a single balancer pool and
 /// a single concentrated pool.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReplaceMigrationRecordsProposal {
     #[prost(string, tag = "1")]
@@ -185,7 +176,6 @@ pub struct ReplaceMigrationRecordsProposal {
 /// Edit Balancer 3 record, and Add Balancer 4 record
 /// The result MigrationRecords in state would be:
 /// [(Balancer 1, CL 5), (Balancer 3, CL 4), (Balancer 4, CL 10)]
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateMigrationRecordsProposal {
     #[prost(string, tag = "1")]
@@ -195,7 +185,6 @@ pub struct UpdateMigrationRecordsProposal {
     #[prost(message, repeated, tag = "3")]
     pub records: ::prost::alloc::vec::Vec<BalancerToConcentratedPoolLink>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolRecordWithCfmmLink {
     #[prost(string, tag = "1")]
@@ -213,7 +202,6 @@ pub struct PoolRecordWithCfmmLink {
 }
 /// CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal is a gov Content type
 /// for creating concentrated liquidity pools and linking it to a CFMM pool.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateConcentratedLiquidityPoolsAndLinktoCfmmProposal {
     #[prost(string, tag = "1")]
@@ -225,7 +213,6 @@ pub struct CreateConcentratedLiquidityPoolsAndLinktoCfmmProposal {
 }
 /// SetScalingFactorControllerProposal is a gov Content type for updating the
 /// scaling factor controller address of a stableswap pool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SetScalingFactorControllerProposal {
     #[prost(string, tag = "1")]
@@ -239,7 +226,6 @@ pub struct SetScalingFactorControllerProposal {
 }
 /// ===================== MsgJoinPool
 /// This is really MsgJoinPoolNoSwap
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgJoinPool {
     #[prost(string, tag = "1")]
@@ -251,7 +237,6 @@ pub struct MsgJoinPool {
     #[prost(message, repeated, tag = "4")]
     pub token_in_maxs: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgJoinPoolResponse {
     #[prost(string, tag = "1")]
@@ -260,7 +245,6 @@ pub struct MsgJoinPoolResponse {
     pub token_in: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== MsgExitPool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExitPool {
     #[prost(string, tag = "1")]
@@ -272,14 +256,12 @@ pub struct MsgExitPool {
     #[prost(message, repeated, tag = "4")]
     pub token_out_mins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExitPoolResponse {
     #[prost(message, repeated, tag = "1")]
     pub token_out: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== MsgSwapExactAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountIn {
     #[prost(string, tag = "1")]
@@ -291,13 +273,11 @@ pub struct MsgSwapExactAmountIn {
     #[prost(string, tag = "4")]
     pub token_out_min_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountInResponse {
     #[prost(string, tag = "1")]
     pub token_out_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountOut {
     #[prost(string, tag = "1")]
@@ -309,7 +289,6 @@ pub struct MsgSwapExactAmountOut {
     #[prost(message, optional, tag = "4")]
     pub token_out: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountOutResponse {
     #[prost(string, tag = "1")]
@@ -317,7 +296,6 @@ pub struct MsgSwapExactAmountOutResponse {
 }
 /// ===================== MsgJoinSwapExternAmountIn
 /// TODO: Rename to MsgJoinSwapExactAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgJoinSwapExternAmountIn {
     #[prost(string, tag = "1")]
@@ -333,14 +311,12 @@ pub struct MsgJoinSwapExternAmountIn {
     #[prost(string, tag = "4")]
     pub share_out_min_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgJoinSwapExternAmountInResponse {
     #[prost(string, tag = "1")]
     pub share_out_amount: ::prost::alloc::string::String,
 }
 /// ===================== MsgJoinSwapShareAmountOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgJoinSwapShareAmountOut {
     #[prost(string, tag = "1")]
@@ -354,14 +330,12 @@ pub struct MsgJoinSwapShareAmountOut {
     #[prost(string, tag = "5")]
     pub token_in_max_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgJoinSwapShareAmountOutResponse {
     #[prost(string, tag = "1")]
     pub token_in_amount: ::prost::alloc::string::String,
 }
 /// ===================== MsgExitSwapShareAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExitSwapShareAmountIn {
     #[prost(string, tag = "1")]
@@ -375,14 +349,12 @@ pub struct MsgExitSwapShareAmountIn {
     #[prost(string, tag = "5")]
     pub token_out_min_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExitSwapShareAmountInResponse {
     #[prost(string, tag = "1")]
     pub token_out_amount: ::prost::alloc::string::String,
 }
 /// ===================== MsgExitSwapExternAmountOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExitSwapExternAmountOut {
     #[prost(string, tag = "1")]
@@ -394,7 +366,6 @@ pub struct MsgExitSwapExternAmountOut {
     #[prost(string, tag = "4")]
     pub share_in_max_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExitSwapExternAmountOutResponse {
     #[prost(string, tag = "1")]
@@ -402,21 +373,18 @@ pub struct MsgExitSwapExternAmountOutResponse {
 }
 /// =============================== Pool
 /// Deprecated: please use the alternative in x/poolmanager
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
 /// Deprecated: please use the alternative in x/poolmanager
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolResponse {
     #[prost(message, optional, tag = "1")]
     pub pool: ::core::option::Option<::prost_types::Any>,
 }
 /// =============================== Pools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolsRequest {
     /// pagination defines an optional pagination for the request.
@@ -424,7 +392,6 @@ pub struct QueryPoolsRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -435,30 +402,25 @@ pub struct QueryPoolsResponse {
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
 /// =============================== NumPools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryNumPoolsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryNumPoolsResponse {
     #[prost(uint64, tag = "1")]
     pub num_pools: u64,
 }
 /// =============================== PoolType
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolTypeRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolTypeResponse {
     #[prost(string, tag = "1")]
     pub pool_type: ::prost::alloc::string::String,
 }
 /// =============================== CalcJoinPoolShares
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCalcJoinPoolSharesRequest {
     #[prost(uint64, tag = "1")]
@@ -466,7 +428,6 @@ pub struct QueryCalcJoinPoolSharesRequest {
     #[prost(message, repeated, tag = "2")]
     pub tokens_in: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCalcJoinPoolSharesResponse {
     #[prost(string, tag = "1")]
@@ -475,7 +436,6 @@ pub struct QueryCalcJoinPoolSharesResponse {
     pub tokens_out: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== CalcExitPoolCoinsFromShares
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCalcExitPoolCoinsFromSharesRequest {
     #[prost(uint64, tag = "1")]
@@ -483,20 +443,17 @@ pub struct QueryCalcExitPoolCoinsFromSharesRequest {
     #[prost(string, tag = "2")]
     pub share_in_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCalcExitPoolCoinsFromSharesResponse {
     #[prost(message, repeated, tag = "1")]
     pub tokens_out: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== PoolParams
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolParamsRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolParamsResponse {
     #[prost(message, optional, tag = "1")]
@@ -504,34 +461,29 @@ pub struct QueryPoolParamsResponse {
 }
 /// =============================== PoolLiquidity
 /// Deprecated: please use the alternative in x/poolmanager
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalPoolLiquidityRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
 /// Deprecated: please use the alternative in x/poolmanager
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalPoolLiquidityResponse {
     #[prost(message, repeated, tag = "1")]
     pub liquidity: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== TotalShares
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalSharesRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalSharesResponse {
     #[prost(message, optional, tag = "1")]
     pub total_shares: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== CalcJoinPoolNoSwapShares
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCalcJoinPoolNoSwapSharesRequest {
     #[prost(uint64, tag = "1")]
@@ -539,7 +491,6 @@ pub struct QueryCalcJoinPoolNoSwapSharesRequest {
     #[prost(message, repeated, tag = "2")]
     pub tokens_in: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCalcJoinPoolNoSwapSharesResponse {
     #[prost(message, repeated, tag = "1")]
@@ -549,7 +500,6 @@ pub struct QueryCalcJoinPoolNoSwapSharesResponse {
 }
 /// QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
 /// query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySpotPriceRequest {
     #[prost(uint64, tag = "1")]
@@ -561,7 +511,6 @@ pub struct QuerySpotPriceRequest {
 }
 // =============================== PoolsWithFilter
 
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolsWithFilterRequest {
     /// String of the coins in single string separated by comma. Ex)
@@ -574,7 +523,6 @@ pub struct QueryPoolsWithFilterRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryPoolsWithFilterResponse {
     #[prost(message, repeated, tag = "1")]
@@ -586,7 +534,6 @@ pub struct QueryPoolsWithFilterResponse {
 }
 /// QuerySpotPriceResponse defines the gRPC response structure for a SpotPrice
 /// query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySpotPriceResponse {
     /// String of the Dec. Ex) 10.203uatom
@@ -594,7 +541,6 @@ pub struct QuerySpotPriceResponse {
     pub spot_price: ::prost::alloc::string::String,
 }
 /// =============================== EstimateSwapExactAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySwapExactAmountInRequest {
     #[prost(string, tag = "1")]
@@ -606,14 +552,12 @@ pub struct QuerySwapExactAmountInRequest {
     #[prost(message, repeated, tag = "4")]
     pub routes: ::prost::alloc::vec::Vec<super::super::poolmanager::v1beta1::SwapAmountInRoute>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySwapExactAmountInResponse {
     #[prost(string, tag = "1")]
     pub token_out_amount: ::prost::alloc::string::String,
 }
 /// =============================== EstimateSwapExactAmountOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySwapExactAmountOutRequest {
     #[prost(string, tag = "1")]
@@ -625,42 +569,36 @@ pub struct QuerySwapExactAmountOutRequest {
     #[prost(string, tag = "4")]
     pub token_out: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QuerySwapExactAmountOutResponse {
     #[prost(string, tag = "1")]
     pub token_in_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalLiquidityRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryTotalLiquidityResponse {
     #[prost(message, repeated, tag = "1")]
     pub liquidity: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== QueryConcentratedPoolIdLinkFromCFMM
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryConcentratedPoolIdLinkFromCfmmRequest {
     #[prost(uint64, tag = "1")]
     pub cfmm_pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryConcentratedPoolIdLinkFromCfmmResponse {
     #[prost(uint64, tag = "1")]
     pub concentrated_pool_id: u64,
 }
 /// =============================== QueryCFMMConcentratedPoolLinks
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCfmmConcentratedPoolLinksRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCfmmConcentratedPoolLinksResponse {
     #[prost(message, optional, tag = "1")]
     pub migration_records: ::core::option::Option<MigrationRecords>,
 }
+include!("osmosis.gamm.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

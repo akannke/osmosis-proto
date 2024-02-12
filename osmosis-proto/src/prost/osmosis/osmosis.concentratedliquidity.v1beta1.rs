@@ -1,7 +1,6 @@
 // @generated
 /// Position contains position's id, address, pool id, lower tick, upper tick
 /// join time, and liquidity.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Position {
     #[prost(uint64, tag = "1")]
@@ -26,7 +25,6 @@ pub struct Position {
 /// - the amount of claimable incentives
 /// - the amount of incentives that would be forfeited if the position was closed
 /// now
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FullPositionBreakdown {
     #[prost(message, optional, tag = "1")]
@@ -45,7 +43,6 @@ pub struct FullPositionBreakdown {
     pub forfeited_incentives:
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PositionWithPeriodLock {
     #[prost(message, optional, tag = "1")]
@@ -53,7 +50,6 @@ pub struct PositionWithPeriodLock {
     #[prost(message, optional, tag = "2")]
     pub locks: ::core::option::Option<super::super::lockup::PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TickInfo {
     #[prost(string, tag = "1")]
@@ -85,13 +81,11 @@ pub struct TickInfo {
     #[prost(message, optional, tag = "4")]
     pub uptime_trackers: ::core::option::Option<UptimeTrackers>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UptimeTrackers {
     #[prost(message, repeated, tag = "1")]
     pub list: ::prost::alloc::vec::Vec<UptimeTracker>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UptimeTracker {
     #[prost(message, repeated, tag = "1")]
@@ -102,7 +96,6 @@ pub struct UptimeTracker {
 /// incentive being distributed on a pool. Note that PoolId, Denom, and MinUptime
 /// are included in the key so we avoid storing them in state, hence the
 /// distinction between IncentiveRecord and IncentiveRecordBody.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IncentiveRecord {
     /// incentive_id is the id uniquely identifying this incentive record.
@@ -121,7 +114,6 @@ pub struct IncentiveRecord {
 }
 /// IncentiveRecordBody represents the body stored in state for each individual
 /// record.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IncentiveRecordBody {
     /// remaining_coin is the total amount of incentives to be distributed
@@ -136,7 +128,6 @@ pub struct IncentiveRecordBody {
 }
 /// FullTick contains tick index and pool id along with other tick model
 /// information.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FullTick {
     /// pool id associated with the tick.
@@ -151,7 +142,6 @@ pub struct FullTick {
 }
 /// PoolData represents a serialized pool along with its ticks
 /// for genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolData {
     /// pool struct
@@ -168,7 +158,6 @@ pub struct PoolData {
     #[prost(message, repeated, tag = "5")]
     pub incentive_records: ::prost::alloc::vec::Vec<IncentiveRecord>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PositionData {
     #[prost(message, optional, tag = "1")]
@@ -181,7 +170,6 @@ pub struct PositionData {
     pub uptime_accum_records: ::prost::alloc::vec::Vec<super::super::accum::v1beta1::Record>,
 }
 /// GenesisState defines the concentrated liquidity module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// params are all the parameters of the module
@@ -200,7 +188,6 @@ pub struct GenesisState {
 /// In original struct of Accum object, store.KVStore is stored together.
 /// For handling genesis, we do not need to include store.KVStore since we use
 /// CL module's KVStore.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccumObject {
     /// Accumulator's name (pulled from AccumulatorContent)
@@ -212,7 +199,6 @@ pub struct AccumObject {
 /// CreateConcentratedLiquidityPoolsProposal is a gov Content type for creating
 /// concentrated liquidity pools. If a CreateConcentratedLiquidityPoolsProposal
 /// passes, the pools are created via pool manager module account.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateConcentratedLiquidityPoolsProposal {
     #[prost(string, tag = "1")]
@@ -226,7 +212,6 @@ pub struct CreateConcentratedLiquidityPoolsProposal {
 /// spacing decrease for a pool. The proposal will fail if one of the pools do
 /// not exist, or if the new tick spacing is not less than the current tick
 /// spacing.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TickSpacingDecreaseProposal {
     #[prost(string, tag = "1")]
@@ -238,7 +223,6 @@ pub struct TickSpacingDecreaseProposal {
 }
 /// PoolIdToTickSpacingRecord is a struct that contains a pool id to new tick
 /// spacing pair.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolIdToTickSpacingRecord {
     #[prost(uint64, tag = "1")]
@@ -246,7 +230,6 @@ pub struct PoolIdToTickSpacingRecord {
     #[prost(uint64, tag = "2")]
     pub new_tick_spacing: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolRecord {
     #[prost(string, tag = "1")]
@@ -258,7 +241,6 @@ pub struct PoolRecord {
     #[prost(string, tag = "5")]
     pub spread_factor: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Pool {
     /// pool's address holding all liquidity tokens.
@@ -298,7 +280,6 @@ pub struct Pool {
     pub last_liquidity_update: ::core::option::Option<::prost_types::Timestamp>,
 }
 /// =============================== UserPositions
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UserPositionsRequest {
     #[prost(string, tag = "1")]
@@ -309,7 +290,6 @@ pub struct UserPositionsRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UserPositionsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -319,20 +299,17 @@ pub struct UserPositionsResponse {
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
 /// =============================== PositionById
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PositionByIdRequest {
     #[prost(uint64, tag = "1")]
     pub position_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PositionByIdResponse {
     #[prost(message, optional, tag = "1")]
     pub position: ::core::option::Option<FullPositionBreakdown>,
 }
 /// =============================== Pools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolsRequest {
     /// pagination defines an optional pagination for the request.
@@ -340,7 +317,6 @@ pub struct PoolsRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -351,16 +327,13 @@ pub struct PoolsResponse {
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
 /// =============================== ModuleParams
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<super::Params>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TickLiquidityNet {
     #[prost(string, tag = "1")]
@@ -368,7 +341,6 @@ pub struct TickLiquidityNet {
     #[prost(int64, tag = "2")]
     pub tick_index: i64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LiquidityDepthWithRange {
     #[prost(string, tag = "1")]
@@ -379,7 +351,6 @@ pub struct LiquidityDepthWithRange {
     pub upper_tick: i64,
 }
 /// =============================== LiquidityNetInDirection
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LiquidityNetInDirectionRequest {
     #[prost(uint64, tag = "1")]
@@ -395,7 +366,6 @@ pub struct LiquidityNetInDirectionRequest {
     #[prost(bool, tag = "6")]
     pub use_no_bound: bool,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LiquidityNetInDirectionResponse {
     #[prost(message, repeated, tag = "1")]
@@ -408,13 +378,11 @@ pub struct LiquidityNetInDirectionResponse {
     pub current_sqrt_price: ::prost::alloc::string::String,
 }
 /// =============================== LiquidityPerTickRange
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LiquidityPerTickRangeRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LiquidityPerTickRangeResponse {
     #[prost(message, repeated, tag = "1")]
@@ -423,13 +391,11 @@ pub struct LiquidityPerTickRangeResponse {
     pub bucket_index: i64,
 }
 /// ===================== QueryClaimableSpreadRewards
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClaimableSpreadRewardsRequest {
     #[prost(uint64, tag = "1")]
     pub position_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClaimableSpreadRewardsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -437,13 +403,11 @@ pub struct ClaimableSpreadRewardsResponse {
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== QueryClaimableIncentives
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClaimableIncentivesRequest {
     #[prost(uint64, tag = "1")]
     pub position_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClaimableIncentivesResponse {
     #[prost(message, repeated, tag = "1")]
@@ -454,13 +418,11 @@ pub struct ClaimableIncentivesResponse {
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== QueryPoolAccumulatorRewards
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolAccumulatorRewardsRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolAccumulatorRewardsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -470,7 +432,6 @@ pub struct PoolAccumulatorRewardsResponse {
     pub uptime_growth_global: ::prost::alloc::vec::Vec<UptimeTracker>,
 }
 /// ===================== QueryTickAccumulatorTrackers
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TickAccumulatorTrackersRequest {
     #[prost(uint64, tag = "1")]
@@ -478,7 +439,6 @@ pub struct TickAccumulatorTrackersRequest {
     #[prost(int64, tag = "2")]
     pub tick_index: i64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TickAccumulatorTrackersResponse {
     #[prost(message, repeated, tag = "1")]
@@ -488,7 +448,6 @@ pub struct TickAccumulatorTrackersResponse {
     pub uptime_trackers: ::prost::alloc::vec::Vec<UptimeTracker>,
 }
 /// ===================== QueryIncentiveRecords
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IncentiveRecordsRequest {
     #[prost(uint64, tag = "1")]
@@ -497,7 +456,6 @@ pub struct IncentiveRecordsRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IncentiveRecordsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -508,43 +466,36 @@ pub struct IncentiveRecordsResponse {
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
 /// =============================== CFMMPoolIdLinkFromConcentratedPoolId
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CfmmPoolIdLinkFromConcentratedPoolIdRequest {
     #[prost(uint64, tag = "1")]
     pub concentrated_pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CfmmPoolIdLinkFromConcentratedPoolIdResponse {
     #[prost(uint64, tag = "1")]
     pub cfmm_pool_id: u64,
 }
 /// =============================== UserUnbondingPositions
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UserUnbondingPositionsRequest {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UserUnbondingPositionsResponse {
     #[prost(message, repeated, tag = "1")]
     pub positions_with_period_lock: ::prost::alloc::vec::Vec<PositionWithPeriodLock>,
 }
 /// =============================== GetTotalLiquidity
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTotalLiquidityRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTotalLiquidityResponse {
     #[prost(message, repeated, tag = "1")]
     pub total_liquidity: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== NumNextInitializedTicks
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NumNextInitializedTicksRequest {
     #[prost(uint64, tag = "1")]
@@ -554,7 +505,6 @@ pub struct NumNextInitializedTicksRequest {
     #[prost(uint64, tag = "3")]
     pub num_next_initialized_ticks: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NumNextInitializedTicksResponse {
     #[prost(message, repeated, tag = "1")]
@@ -565,7 +515,6 @@ pub struct NumNextInitializedTicksResponse {
     pub current_liquidity: ::prost::alloc::string::String,
 }
 /// ===================== MsgCreatePosition
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreatePosition {
     #[prost(uint64, tag = "1")]
@@ -587,7 +536,6 @@ pub struct MsgCreatePosition {
     #[prost(string, tag = "7")]
     pub token_min_amount1: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreatePositionResponse {
     #[prost(uint64, tag = "1")]
@@ -608,7 +556,6 @@ pub struct MsgCreatePositionResponse {
     pub upper_tick: i64,
 }
 /// ===================== MsgAddToPosition
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAddToPosition {
     #[prost(uint64, tag = "1")]
@@ -634,7 +581,6 @@ pub struct MsgAddToPosition {
     #[prost(string, tag = "6")]
     pub token_min_amount1: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAddToPositionResponse {
     #[prost(uint64, tag = "1")]
@@ -645,7 +591,6 @@ pub struct MsgAddToPositionResponse {
     pub amount1: ::prost::alloc::string::String,
 }
 /// ===================== MsgWithdrawPosition
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawPosition {
     #[prost(uint64, tag = "1")]
@@ -655,7 +600,6 @@ pub struct MsgWithdrawPosition {
     #[prost(string, tag = "3")]
     pub liquidity_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawPositionResponse {
     #[prost(string, tag = "1")]
@@ -664,7 +608,6 @@ pub struct MsgWithdrawPositionResponse {
     pub amount1: ::prost::alloc::string::String,
 }
 /// ===================== MsgCollectSpreadRewards
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCollectSpreadRewards {
     #[prost(uint64, repeated, packed = "false", tag = "1")]
@@ -672,7 +615,6 @@ pub struct MsgCollectSpreadRewards {
     #[prost(string, tag = "2")]
     pub sender: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCollectSpreadRewardsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -680,7 +622,6 @@ pub struct MsgCollectSpreadRewardsResponse {
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== MsgCollectIncentives
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCollectIncentives {
     #[prost(uint64, repeated, packed = "false", tag = "1")]
@@ -688,7 +629,6 @@ pub struct MsgCollectIncentives {
     #[prost(string, tag = "2")]
     pub sender: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCollectIncentivesResponse {
     #[prost(message, repeated, tag = "1")]
@@ -699,7 +639,6 @@ pub struct MsgCollectIncentivesResponse {
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== MsgFungifyChargedPositions
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgFungifyChargedPositions {
     #[prost(uint64, repeated, packed = "false", tag = "1")]
@@ -707,14 +646,12 @@ pub struct MsgFungifyChargedPositions {
     #[prost(string, tag = "2")]
     pub sender: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgFungifyChargedPositionsResponse {
     #[prost(uint64, tag = "1")]
     pub new_position_id: u64,
 }
 /// ===================== MsgTransferPositions
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgTransferPositions {
     #[prost(uint64, repeated, packed = "false", tag = "1")]
@@ -724,7 +661,7 @@ pub struct MsgTransferPositions {
     #[prost(string, tag = "3")]
     pub new_owner: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgTransferPositionsResponse {}
+include!("osmosis.concentratedliquidity.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

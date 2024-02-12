@@ -4,7 +4,6 @@
 /// state. If a user does not have a validator set preference list set, and has
 /// staked, make their preference list default to their current staking
 /// distribution.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorPreference {
     /// val_oper_address holds the validator address the user wants to delegate
@@ -19,7 +18,6 @@ pub struct ValidatorPreference {
 /// It contains a list of (validator, percent_allocation) pairs.
 /// The percent allocation are arranged in decimal notation from 0 to 1 and must
 /// add up to 1.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorSetPreferences {
     /// preference holds {valAddr, weight} for the user who created it.
@@ -27,7 +25,6 @@ pub struct ValidatorSetPreferences {
     pub preferences: ::prost::alloc::vec::Vec<ValidatorPreference>,
 }
 /// Request type for UserValidatorPreferences.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UserValidatorPreferencesRequest {
     /// user account address
@@ -35,14 +32,12 @@ pub struct UserValidatorPreferencesRequest {
     pub address: ::prost::alloc::string::String,
 }
 /// Response type the QueryUserValidatorPreferences query request
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UserValidatorPreferencesResponse {
     #[prost(message, repeated, tag = "1")]
     pub preferences: ::prost::alloc::vec::Vec<ValidatorPreference>,
 }
 /// MsgCreateValidatorSetPreference is a list that holds validator-set.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetValidatorSetPreference {
     /// delegator is the user who is trying to create a validator-set.
@@ -52,12 +47,10 @@ pub struct MsgSetValidatorSetPreference {
     #[prost(message, repeated, tag = "2")]
     pub preferences: ::prost::alloc::vec::Vec<ValidatorPreference>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetValidatorSetPreferenceResponse {}
 /// MsgDelegateToValidatorSet allows users to delegate to an existing
 /// validator-set
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegateToValidatorSet {
     /// delegator is the user who is trying to delegate.
@@ -70,10 +63,8 @@ pub struct MsgDelegateToValidatorSet {
     #[prost(message, optional, tag = "2")]
     pub coin: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegateToValidatorSetResponse {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUndelegateFromValidatorSet {
     /// delegator is the user who is trying to undelegate.
@@ -87,10 +78,8 @@ pub struct MsgUndelegateFromValidatorSet {
     #[prost(message, optional, tag = "3")]
     pub coin: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUndelegateFromValidatorSetResponse {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUndelegateFromRebalancedValidatorSet {
     /// delegator is the user who is trying to undelegate.
@@ -106,10 +95,8 @@ pub struct MsgUndelegateFromRebalancedValidatorSet {
     #[prost(message, optional, tag = "2")]
     pub coin: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgUndelegateFromRebalancedValidatorSetResponse {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRedelegateValidatorSet {
     /// delegator is the user who is trying to create a validator-set.
@@ -119,25 +106,21 @@ pub struct MsgRedelegateValidatorSet {
     #[prost(message, repeated, tag = "2")]
     pub preferences: ::prost::alloc::vec::Vec<ValidatorPreference>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgRedelegateValidatorSetResponse {}
 /// MsgWithdrawDelegationRewards allows user to claim staking rewards from the
 /// validator set.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawDelegationRewards {
     /// delegator is the user who is trying to claim staking rewards.
     #[prost(string, tag = "1")]
     pub delegator: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgWithdrawDelegationRewardsResponse {}
 /// MsgDelegateBondedTokens breaks bonded lockup (by ID) of osmo, of
 /// length <= 2 weeks and takes all that osmo and delegates according to
 /// delegator's current validator set preference.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegateBondedTokens {
     /// delegator is the user who is trying to force unbond osmo and delegate.
@@ -147,7 +130,7 @@ pub struct MsgDelegateBondedTokens {
     #[prost(uint64, tag = "2")]
     pub lock_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgDelegateBondedTokensResponse {}
+include!("osmosis.valsetpref.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

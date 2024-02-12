@@ -1,5 +1,4 @@
 // @generated
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     /// code_ide_whitelist contains the list of code ids that are allowed to be
@@ -14,7 +13,6 @@ pub struct Params {
     pub pool_migration_limit: u64,
 }
 /// GenesisState defines the cosmwasmpool module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// params is the container of cosmwasmpool parameters.
@@ -26,7 +24,6 @@ pub struct GenesisState {
 /// UploadCosmWasmPoolCodeAndWhiteListProposal is a gov Content type for
 /// uploading coswasm pool code and adding it to internal whitelist. Only the
 /// code ids created by this message are eligible for being x/cosmwasmpool pools.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UploadCosmWasmPoolCodeAndWhiteListProposal {
     #[prost(string, tag = "1")]
@@ -63,7 +60,6 @@ pub struct UploadCosmWasmPoolCodeAndWhiteListProposal {
 /// launch). The proposal fails if more. Note that 20 was chosen arbitrarily to
 /// have a constant bound on the number of pools migrated at once. This size will
 /// be configured by a module parameter so it can be changed by a constant.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigratePoolContractsProposal {
     #[prost(string, tag = "1")]
@@ -90,7 +86,6 @@ pub struct MigratePoolContractsProposal {
     pub migrate_msg: ::prost::alloc::vec::Vec<u8>,
 }
 /// ===================== InstantiateMsg
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstantiateMsg {
     /// pool_asset_denoms is the list of asset denoms that are initialized
@@ -99,7 +94,6 @@ pub struct InstantiateMsg {
     pub pool_asset_denoms: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// ===================== CalcOutAmtGivenIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CalcOutAmtGivenIn {
     /// token_in is the token to be sent to the pool.
@@ -112,7 +106,6 @@ pub struct CalcOutAmtGivenIn {
     #[prost(string, tag = "3")]
     pub swap_fee: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CalcOutAmtGivenInRequest {
     /// calc_out_amt_given_in is the structure containing all the request
@@ -120,7 +113,6 @@ pub struct CalcOutAmtGivenInRequest {
     #[prost(message, optional, tag = "1")]
     pub calc_out_amt_given_in: ::core::option::Option<CalcOutAmtGivenIn>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CalcOutAmtGivenInResponse {
     /// token_out is the token out computed from this swap estimate call.
@@ -128,7 +120,6 @@ pub struct CalcOutAmtGivenInResponse {
     pub token_out: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== CalcInAmtGivenOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CalcInAmtGivenOut {
     /// token_out is the token out to be receoved from the pool.
@@ -141,7 +132,6 @@ pub struct CalcInAmtGivenOut {
     #[prost(string, tag = "3")]
     pub swap_fee: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CalcInAmtGivenOutRequest {
     /// calc_in_amt_given_out is the structure containing all the request
@@ -149,7 +139,6 @@ pub struct CalcInAmtGivenOutRequest {
     #[prost(message, optional, tag = "1")]
     pub calc_in_amt_given_out: ::core::option::Option<CalcInAmtGivenOut>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CalcInAmtGivenOutResponse {
     /// token_in is the token in computed from this swap estimate call.
@@ -157,7 +146,6 @@ pub struct CalcInAmtGivenOutResponse {
     pub token_in: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== SwapExactAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapExactAmountIn {
     #[prost(string, tag = "1")]
@@ -176,7 +164,6 @@ pub struct SwapExactAmountIn {
     #[prost(string, tag = "5")]
     pub swap_fee: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapExactAmountInSudoMsg {
     /// swap_exact_amount_in is the structure containing all the request
@@ -184,7 +171,6 @@ pub struct SwapExactAmountInSudoMsg {
     #[prost(message, optional, tag = "1")]
     pub swap_exact_amount_in: ::core::option::Option<SwapExactAmountIn>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapExactAmountInSudoMsgResponse {
     /// token_out_amount is the token out computed from this swap estimate call.
@@ -192,7 +178,6 @@ pub struct SwapExactAmountInSudoMsgResponse {
     pub token_out_amount: ::prost::alloc::string::String,
 }
 /// ===================== SwapExactAmountOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapExactAmountOut {
     #[prost(string, tag = "1")]
@@ -211,7 +196,6 @@ pub struct SwapExactAmountOut {
     #[prost(string, tag = "5")]
     pub swap_fee: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapExactAmountOutSudoMsg {
     /// swap_exact_amount_out is the structure containing all the request
@@ -219,7 +203,6 @@ pub struct SwapExactAmountOutSudoMsg {
     #[prost(message, optional, tag = "1")]
     pub swap_exact_amount_out: ::core::option::Option<SwapExactAmountOut>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapExactAmountOutSudoMsgResponse {
     /// token_in_amount is the token in computed from this swap estimate call.
@@ -242,7 +225,6 @@ pub struct SwapExactAmountOutSudoMsgResponse {
 /// on the Pool struct. The reason why we cannot have a Pool struct only is
 /// because it cannot be serialized into state due to having a non-serializable
 /// wasmKeeper field.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CosmWasmPool {
     #[prost(string, tag = "1")]
@@ -255,14 +237,12 @@ pub struct CosmWasmPool {
     pub instantiate_msg: ::prost::alloc::vec::Vec<u8>,
 }
 /// ===================== GetSwapFeeQueryMsg
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetSwapFeeQueryMsg {
     /// get_swap_fee is the query structure to get swap fee.
     #[prost(message, optional, tag = "1")]
     pub get_swap_fee: ::core::option::Option<EmptyStruct>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetSwapFeeQueryMsgResponse {
     /// swap_fee is the swap fee for this swap estimate.
@@ -270,7 +250,6 @@ pub struct GetSwapFeeQueryMsgResponse {
     pub swap_fee: ::prost::alloc::string::String,
 }
 /// ===================== SpotPriceQueryMsg
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpotPrice {
     /// quote_asset_denom is the quote asset of the spot query.
@@ -280,7 +259,6 @@ pub struct SpotPrice {
     #[prost(string, tag = "2")]
     pub base_asset_denom: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpotPriceQueryMsg {
     /// spot_price is the structure containing request field of the spot price
@@ -288,7 +266,6 @@ pub struct SpotPriceQueryMsg {
     #[prost(message, optional, tag = "1")]
     pub spot_price: ::core::option::Option<SpotPrice>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpotPriceQueryMsgResponse {
     /// spot_price is the spot price returned.
@@ -296,10 +273,8 @@ pub struct SpotPriceQueryMsgResponse {
     pub spot_price: ::prost::alloc::string::String,
 }
 /// ===================== GetTotalPoolLiquidityQueryMsg
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EmptyStruct {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTotalPoolLiquidityQueryMsg {
     /// get_total_pool_liquidity is the structure containing request field of the
@@ -307,7 +282,6 @@ pub struct GetTotalPoolLiquidityQueryMsg {
     #[prost(message, optional, tag = "1")]
     pub get_total_pool_liquidity: ::core::option::Option<EmptyStruct>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTotalPoolLiquidityQueryMsgResponse {
     ///   total_pool_liquidity is the total liquidity in the pool denominated in
@@ -317,7 +291,6 @@ pub struct GetTotalPoolLiquidityQueryMsgResponse {
         ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// ===================== GetTotalSharesQueryMsg
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTotalSharesQueryMsg {
     /// get_total_shares is the structure containing request field of the
@@ -325,7 +298,6 @@ pub struct GetTotalSharesQueryMsg {
     #[prost(message, optional, tag = "1")]
     pub get_total_shares: ::core::option::Option<EmptyStruct>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTotalSharesQueryMsgResponse {
     /// total_shares is the amount of shares returned.
@@ -333,10 +305,8 @@ pub struct GetTotalSharesQueryMsgResponse {
     pub total_shares: ::prost::alloc::string::String,
 }
 /// ===================== JoinPoolExecuteMsg
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EmptyRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct JoinPoolExecuteMsgRequest {
     /// join_pool is the structure containing all request fields of the join pool
@@ -344,11 +314,9 @@ pub struct JoinPoolExecuteMsgRequest {
     #[prost(message, optional, tag = "1")]
     pub join_pool: ::core::option::Option<EmptyRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct JoinPoolExecuteMsgResponse {}
 /// ===================== ExitPoolExecuteMsg
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExitPoolExecuteMsgRequest {
     /// exit_pool is the structure containing all request fields of the exit pool
@@ -356,11 +324,9 @@ pub struct ExitPoolExecuteMsgRequest {
     #[prost(message, optional, tag = "1")]
     pub exit_pool: ::core::option::Option<EmptyRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExitPoolExecuteMsgResponse {}
 /// ===================== MsgCreateCosmwasmPool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateCosmWasmPool {
     #[prost(uint64, tag = "1")]
@@ -371,24 +337,20 @@ pub struct MsgCreateCosmWasmPool {
     pub sender: ::prost::alloc::string::String,
 }
 /// Returns a unique poolID to identify the pool with.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateCosmWasmPoolResponse {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
 /// =============================== ContractInfoByPoolId
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
 /// =============================== Pools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolsRequest {
     /// pagination defines an optional pagination for the request.
@@ -396,7 +358,6 @@ pub struct PoolsRequest {
     pub pagination:
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageRequest>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -407,14 +368,12 @@ pub struct PoolsResponse {
         ::core::option::Option<::cosmos_sdk_proto::cosmos::base::query::v1beta1::PageResponse>,
 }
 /// =============================== ContractInfoByPoolId
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractInfoByPoolIdRequest {
     /// pool_id is the pool id of the requested pool.
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractInfoByPoolIdResponse {
     /// contract_address is the pool address and contract address
@@ -425,4 +384,5 @@ pub struct ContractInfoByPoolIdResponse {
     #[prost(uint64, tag = "2")]
     pub code_id: u64,
 }
+include!("osmosis.cosmwasmpool.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

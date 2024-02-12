@@ -3,7 +3,6 @@
 /// governance in the future. This params are not managed by the chain
 /// governance. Instead they will be managed by the token holders of the pool.
 /// The pool's token holders are specified in future_pool_governor.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolParams {
     #[prost(string, tag = "1")]
@@ -15,7 +14,6 @@ pub struct PoolParams {
     pub exit_fee: ::prost::alloc::string::String,
 }
 /// Pool is the stableswap Pool struct
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Pool {
     #[prost(string, tag = "1")]
@@ -48,7 +46,6 @@ pub struct Pool {
     pub scaling_factor_controller: ::prost::alloc::string::String,
 }
 /// ===================== MsgCreatePool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateStableswapPool {
     #[prost(string, tag = "1")]
@@ -66,7 +63,6 @@ pub struct MsgCreateStableswapPool {
     pub scaling_factor_controller: ::prost::alloc::string::String,
 }
 /// Returns a poolID with custom poolName.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateStableswapPoolResponse {
     #[prost(uint64, tag = "1")]
@@ -74,7 +70,6 @@ pub struct MsgCreateStableswapPoolResponse {
 }
 /// Sender must be the pool's scaling_factor_governor in order for the tx to
 /// succeed. Adjusts stableswap scaling factors.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStableSwapAdjustScalingFactors {
     #[prost(string, tag = "1")]
@@ -84,7 +79,7 @@ pub struct MsgStableSwapAdjustScalingFactors {
     #[prost(uint64, repeated, packed = "false", tag = "3")]
     pub scaling_factors: ::prost::alloc::vec::Vec<u64>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgStableSwapAdjustScalingFactorsResponse {}
+include!("osmosis.gamm.poolmodels.stableswap.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

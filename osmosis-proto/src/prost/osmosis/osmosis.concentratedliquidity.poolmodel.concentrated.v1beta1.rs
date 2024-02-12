@@ -1,6 +1,5 @@
 // @generated
 /// ===================== MsgCreateConcentratedPool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateConcentratedPool {
     #[prost(string, tag = "1")]
@@ -15,10 +14,10 @@ pub struct MsgCreateConcentratedPool {
     pub spread_factor: ::prost::alloc::string::String,
 }
 /// Returns a unique poolID to identify the pool with.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgCreateConcentratedPoolResponse {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
+include!("osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

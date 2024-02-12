@@ -2,7 +2,6 @@
 /// AccumulatorContent is the state-entry for the global accumulator.
 /// It contains the name of the global accumulator and the total value of
 /// shares belonging to it from all positions.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccumulatorContent {
     #[prost(message, repeated, tag = "1")]
@@ -10,12 +9,10 @@ pub struct AccumulatorContent {
     #[prost(string, tag = "2")]
     pub total_shares: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Options {}
 /// Record corresponds to an individual position value belonging to the
 /// global accumulator.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Record {
     /// num_shares is the number of shares belonging to the position associated

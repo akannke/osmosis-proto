@@ -1,6 +1,5 @@
 // @generated
 /// TokenPairArbRoutes tracks all of the hot routes for a given pair of tokens
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TokenPairArbRoutes {
     /// Stores all of the possible hot paths for a given pair of tokens
@@ -14,7 +13,6 @@ pub struct TokenPairArbRoutes {
     pub token_out: ::prost::alloc::string::String,
 }
 /// Route is a hot route for a given pair of tokens
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Route {
     /// The pool IDs that are traversed in the directed cyclic graph (traversed
@@ -28,7 +26,6 @@ pub struct Route {
     pub step_size: ::prost::alloc::string::String,
 }
 /// Trade is a single trade in a route
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Trade {
     /// The pool id of the pool that is traded on
@@ -43,7 +40,6 @@ pub struct Trade {
 }
 /// RouteStatistics contains the number of trades the module has executed after a
 /// swap on a given route and the profits from the trades
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RouteStatistics {
     /// profits is the total profit from all trades on this route
@@ -65,7 +61,6 @@ pub struct RouteStatistics {
 ///
 /// DEPRECATED: This field is deprecated and will be removed in the next
 /// release. It is replaced by the `info_by_pool_type` field.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolWeights {
     /// The weight of a stableswap pool
@@ -85,7 +80,6 @@ pub struct PoolWeights {
 /// gas and time) it is to execute a swap on a given pool type. This distinction
 /// is made and necessary because the execution time ranges significantly between
 /// the different pool types.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InfoByPoolType {
     /// The stable pool info
@@ -102,7 +96,6 @@ pub struct InfoByPoolType {
     pub cosmwasm: ::core::option::Option<CosmwasmPoolInfo>,
 }
 /// StablePoolInfo contains meta data pertaining to a stableswap pool type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StablePoolInfo {
     /// The weight of a stableswap pool
@@ -110,7 +103,6 @@ pub struct StablePoolInfo {
     pub weight: u64,
 }
 /// BalancerPoolInfo contains meta data pertaining to a balancer pool type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BalancerPoolInfo {
     /// The weight of a balancer pool
@@ -119,7 +111,6 @@ pub struct BalancerPoolInfo {
 }
 /// ConcentratedPoolInfo contains meta data pertaining to a concentrated pool
 /// type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConcentratedPoolInfo {
     /// The weight of a concentrated pool
@@ -130,7 +121,6 @@ pub struct ConcentratedPoolInfo {
     pub max_ticks_crossed: u64,
 }
 /// CosmwasmPoolInfo contains meta data pertaining to a cosmwasm pool type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CosmwasmPoolInfo {
     /// The weight of a cosmwasm pool (by contract address)
@@ -139,7 +129,6 @@ pub struct CosmwasmPoolInfo {
 }
 /// WeightMap maps a contract address to a weight. The weight of an address
 /// corresponds to the amount of ms required to execute a swap on that contract.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WeightMap {
     /// The weight of a cosmwasm pool (by contract address)
@@ -152,7 +141,6 @@ pub struct WeightMap {
 /// BaseDenom represents a single base denom that the module uses for its
 /// arbitrage trades. It contains the denom name alongside the step size of the
 /// binary search that is used to find the optimal swap amount
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BaseDenom {
     /// The denom i.e. name of the base denom (ex. uosmo)
@@ -163,7 +151,6 @@ pub struct BaseDenom {
     #[prost(string, tag = "2")]
     pub step_size: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AllProtocolRevenue {
     #[prost(message, optional, tag = "1")]
@@ -172,7 +159,6 @@ pub struct AllProtocolRevenue {
     #[prost(message, optional, tag = "3")]
     pub cyclic_arb_tracker: ::core::option::Option<CyclicArbTracker>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CyclicArbTracker {
     #[prost(message, repeated, tag = "1")]
@@ -181,7 +167,6 @@ pub struct CyclicArbTracker {
     pub height_accounting_starts_from: i64,
 }
 /// Params defines the parameters for the module.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     /// Boolean whether the protorev module is enabled.
@@ -192,7 +177,6 @@ pub struct Params {
     pub admin: ::prost::alloc::string::String,
 }
 /// GenesisState defines the protorev module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// Parameters for the protorev module.
@@ -247,7 +231,6 @@ pub struct GenesisState {
 }
 /// SetProtoRevEnabledProposal is a gov Content type to update whether the
 /// protorev module is enabled
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SetProtoRevEnabledProposal {
     #[prost(string, tag = "1")]
@@ -260,7 +243,6 @@ pub struct SetProtoRevEnabledProposal {
 /// SetProtoRevAdminAccountProposal is a gov Content type to set the admin
 /// account that will receive permissions to alter hot routes and set the
 /// developer address that will be receiving a share of profits from the module
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SetProtoRevAdminAccountProposal {
     #[prost(string, tag = "1")]
@@ -271,11 +253,9 @@ pub struct SetProtoRevAdminAccountProposal {
     pub account: ::prost::alloc::string::String,
 }
 /// QueryParamsRequest is request type for the Query/Params RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
 /// QueryParamsResponse is response type for the Query/Params RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
     /// params holds all the parameters of this module.
@@ -284,12 +264,10 @@ pub struct QueryParamsResponse {
 }
 /// QueryGetProtoRevNumberOfTradesRequest is request type for the
 /// Query/GetProtoRevNumberOfTrades RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevNumberOfTradesRequest {}
 /// QueryGetProtoRevNumberOfTradesResponse is response type for the
 /// Query/GetProtoRevNumberOfTrades RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevNumberOfTradesResponse {
     /// number_of_trades is the number of trades the module has executed
@@ -298,7 +276,6 @@ pub struct QueryGetProtoRevNumberOfTradesResponse {
 }
 /// QueryGetProtoRevProfitsByDenomRequest is request type for the
 /// Query/GetProtoRevProfitsByDenom RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevProfitsByDenomRequest {
     /// denom is the denom to query profits by
@@ -307,7 +284,6 @@ pub struct QueryGetProtoRevProfitsByDenomRequest {
 }
 /// QueryGetProtoRevProfitsByDenomResponse is response type for the
 /// Query/GetProtoRevProfitsByDenom RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevProfitsByDenomResponse {
     /// profit is the profits of the module by the selected denom
@@ -316,12 +292,10 @@ pub struct QueryGetProtoRevProfitsByDenomResponse {
 }
 /// QueryGetProtoRevAllProfitsRequest is request type for the
 /// Query/GetProtoRevAllProfits RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevAllProfitsRequest {}
 /// QueryGetProtoRevAllProfitsResponse is response type for the
 /// Query/GetProtoRevAllProfits RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevAllProfitsResponse {
     /// profits is a list of all of the profits from the module
@@ -330,7 +304,6 @@ pub struct QueryGetProtoRevAllProfitsResponse {
 }
 /// QueryGetProtoRevStatisticsByPoolRequest is request type for the
 /// Query/GetProtoRevStatisticsByRoute RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevStatisticsByRouteRequest {
     /// route is the set of pool ids to query statistics by i.e. 1,2,3
@@ -339,7 +312,6 @@ pub struct QueryGetProtoRevStatisticsByRouteRequest {
 }
 /// QueryGetProtoRevStatisticsByRouteResponse is response type for the
 /// Query/GetProtoRevStatisticsByRoute RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevStatisticsByRouteResponse {
     /// statistics contains the number of trades the module has executed after a
@@ -349,12 +321,10 @@ pub struct QueryGetProtoRevStatisticsByRouteResponse {
 }
 /// QueryGetProtoRevAllRouteStatisticsRequest is request type for the
 /// Query/GetProtoRevAllRouteStatistics RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevAllRouteStatisticsRequest {}
 /// QueryGetProtoRevAllRouteStatisticsResponse is response type for the
 /// Query/GetProtoRevAllRouteStatistics RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevAllRouteStatisticsResponse {
     /// statistics contains the number of trades/profits the module has executed on
@@ -364,12 +334,10 @@ pub struct QueryGetProtoRevAllRouteStatisticsResponse {
 }
 /// QueryGetProtoRevTokenPairArbRoutesRequest is request type for the
 /// Query/GetProtoRevTokenPairArbRoutes RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevTokenPairArbRoutesRequest {}
 /// QueryGetProtoRevTokenPairArbRoutesResponse is response type for the
 /// Query/GetProtoRevTokenPairArbRoutes RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevTokenPairArbRoutesResponse {
     /// routes is a list of all of the hot routes that the module is currently
@@ -379,12 +347,10 @@ pub struct QueryGetProtoRevTokenPairArbRoutesResponse {
 }
 /// QueryGetProtoRevAdminAccountRequest is request type for the
 /// Query/GetProtoRevAdminAccount RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevAdminAccountRequest {}
 /// QueryGetProtoRevAdminAccountResponse is response type for the
 /// Query/GetProtoRevAdminAccount RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevAdminAccountResponse {
     /// admin_account is the admin account of the module
@@ -393,12 +359,10 @@ pub struct QueryGetProtoRevAdminAccountResponse {
 }
 /// QueryGetProtoRevDeveloperAccountRequest is request type for the
 /// Query/GetProtoRevDeveloperAccount RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevDeveloperAccountRequest {}
 /// QueryGetProtoRevDeveloperAccountResponse is response type for the
 /// Query/GetProtoRevDeveloperAccount RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevDeveloperAccountResponse {
     /// developer_account is the developer account of the module
@@ -407,12 +371,10 @@ pub struct QueryGetProtoRevDeveloperAccountResponse {
 }
 /// QueryGetProtoRevInfoByPoolTypeRequest is request type for the
 /// Query/GetProtoRevInfoByPoolType RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevInfoByPoolTypeRequest {}
 /// QueryGetProtoRevInfoByPoolTypeResponse is response type for the
 /// Query/GetProtoRevInfoByPoolType RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevInfoByPoolTypeResponse {
     /// InfoByPoolType contains all information pertaining to how different
@@ -422,12 +384,10 @@ pub struct QueryGetProtoRevInfoByPoolTypeResponse {
 }
 /// QueryGetProtoRevMaxPoolPointsPerBlockRequest is request type for the
 /// Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevMaxPoolPointsPerBlockRequest {}
 /// QueryGetProtoRevMaxPoolPointsPerBlockResponse is response type for the
 /// Query/GetProtoRevMaxPoolPointsPerBlock RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevMaxPoolPointsPerBlockResponse {
     /// max_pool_points_per_block is the maximum number of pool points that can be
@@ -437,12 +397,10 @@ pub struct QueryGetProtoRevMaxPoolPointsPerBlockResponse {
 }
 /// QueryGetProtoRevMaxPoolPointsPerTxRequest is request type for the
 /// Query/GetProtoRevMaxPoolPointsPerTx RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevMaxPoolPointsPerTxRequest {}
 /// QueryGetProtoRevMaxPoolPointsPerTxResponse is response type for the
 /// Query/GetProtoRevMaxPoolPointsPerTx RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevMaxPoolPointsPerTxResponse {
     /// max_pool_points_per_tx is the maximum number of pool points that can be
@@ -452,12 +410,10 @@ pub struct QueryGetProtoRevMaxPoolPointsPerTxResponse {
 }
 /// QueryGetProtoRevBaseDenomsRequest is request type for the
 /// Query/GetProtoRevBaseDenoms RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevBaseDenomsRequest {}
 /// QueryGetProtoRevBaseDenomsResponse is response type for the
 /// Query/GetProtoRevBaseDenoms RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevBaseDenomsResponse {
     /// base_denoms is a list of all of the base denoms and step sizes
@@ -466,12 +422,10 @@ pub struct QueryGetProtoRevBaseDenomsResponse {
 }
 /// QueryGetProtoRevEnabledRequest is request type for the
 /// Query/GetProtoRevEnabled RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevEnabledRequest {}
 /// QueryGetProtoRevEnabledResponse is response type for the
 /// Query/GetProtoRevEnabled RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevEnabledResponse {
     /// enabled is whether the module is enabled
@@ -480,7 +434,6 @@ pub struct QueryGetProtoRevEnabledResponse {
 }
 /// QueryGetProtoRevPoolRequest is request type for the
 /// Query/GetProtoRevPool RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevPoolRequest {
     /// base_denom is the base denom set in protorev for the denom pair to pool
@@ -493,24 +446,20 @@ pub struct QueryGetProtoRevPoolRequest {
 }
 /// QueryGetProtoRevPoolResponse is response type for the
 /// Query/GetProtoRevPool RPC method.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetProtoRevPoolResponse {
     /// pool_id is the pool_id stored for the denom pair
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetAllProtocolRevenueRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryGetAllProtocolRevenueResponse {
     #[prost(message, optional, tag = "1")]
     pub all_protocol_revenue: ::core::option::Option<AllProtocolRevenue>,
 }
 /// MsgSetHotRoutes defines the Msg/SetHotRoutes request type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetHotRoutes {
     /// admin is the account that is authorized to set the hot routes.
@@ -521,11 +470,9 @@ pub struct MsgSetHotRoutes {
     pub hot_routes: ::prost::alloc::vec::Vec<TokenPairArbRoutes>,
 }
 /// MsgSetHotRoutesResponse defines the Msg/SetHotRoutes response type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetHotRoutesResponse {}
 /// MsgSetDeveloperAccount defines the Msg/SetDeveloperAccount request type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetDeveloperAccount {
     /// admin is the account that is authorized to set the developer account.
@@ -538,11 +485,9 @@ pub struct MsgSetDeveloperAccount {
 }
 /// MsgSetDeveloperAccountResponse defines the Msg/SetDeveloperAccount response
 /// type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetDeveloperAccountResponse {}
 /// MsgSetInfoByPoolType defines the Msg/SetInfoByPoolType request type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetInfoByPoolType {
     /// admin is the account that is authorized to set the pool weights.
@@ -553,11 +498,9 @@ pub struct MsgSetInfoByPoolType {
     pub info_by_pool_type: ::core::option::Option<InfoByPoolType>,
 }
 /// MsgSetInfoByPoolTypeResponse defines the Msg/SetInfoByPoolType response type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetInfoByPoolTypeResponse {}
 /// MsgSetMaxPoolPointsPerTx defines the Msg/SetMaxPoolPointsPerTx request type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetMaxPoolPointsPerTx {
     /// admin is the account that is authorized to set the max pool points per tx.
@@ -570,12 +513,10 @@ pub struct MsgSetMaxPoolPointsPerTx {
 }
 /// MsgSetMaxPoolPointsPerTxResponse defines the Msg/SetMaxPoolPointsPerTx
 /// response type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetMaxPoolPointsPerTxResponse {}
 /// MsgSetMaxPoolPointsPerBlock defines the Msg/SetMaxPoolPointsPerBlock request
 /// type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetMaxPoolPointsPerBlock {
     /// admin is the account that is authorized to set the max pool points per
@@ -589,11 +530,9 @@ pub struct MsgSetMaxPoolPointsPerBlock {
 }
 /// MsgSetMaxPoolPointsPerBlockResponse defines the
 /// Msg/SetMaxPoolPointsPerBlock response type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetMaxPoolPointsPerBlockResponse {}
 /// MsgSetBaseDenoms defines the Msg/SetBaseDenoms request type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetBaseDenoms {
     /// admin is the account that is authorized to set the base denoms.
@@ -604,7 +543,7 @@ pub struct MsgSetBaseDenoms {
     pub base_denoms: ::prost::alloc::vec::Vec<BaseDenom>,
 }
 /// MsgSetBaseDenomsResponse defines the Msg/SetBaseDenoms response type.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetBaseDenomsResponse {}
+include!("osmosis.protorev.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)

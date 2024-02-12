@@ -4,7 +4,6 @@
 /// unlock time and the number of coins locked. A state of a period lock is
 /// created upon lock creation, and deleted once the lock has been matured after
 /// the `duration` has passed since unbonding started.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PeriodLock {
     /// ID is the unique id of the lock.
@@ -37,7 +36,6 @@ pub struct PeriodLock {
 /// QueryCondition is a struct used for querying locks upon different conditions.
 /// Duration field and timestamp fields could be optional, depending on the
 /// LockQueryType.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryCondition {
     /// LockQueryType is a type of lock query, ByLockDuration | ByLockTime
@@ -61,7 +59,6 @@ pub struct QueryCondition {
 /// original denom and synthetic suffix. At the time of synthetic lockup creation
 /// and deletion, accumulation store is also being updated and on querier side,
 /// they can query as freely as native lockup.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyntheticLock {
     /// Underlying Lock ID is the underlying native lock's id for this synthetic
@@ -104,25 +101,13 @@ impl LockQueryType {
             LockQueryType::ByGroup => "ByGroup",
         }
     }
-    /// Creates an enum from field names used in the ProtoBuf definition.
-    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
-        match value {
-            "ByDuration" => Some(Self::ByDuration),
-            "ByTime" => Some(Self::ByTime),
-            "NoLock" => Some(Self::NoLock),
-            "ByGroup" => Some(Self::ByGroup),
-            _ => None,
-        }
-    }
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     #[prost(string, repeated, tag = "1")]
     pub force_unlock_allowed_addresses: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// GenesisState defines the lockup module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     #[prost(uint64, tag = "1")]
@@ -134,61 +119,50 @@ pub struct GenesisState {
     #[prost(message, optional, tag = "4")]
     pub params: ::core::option::Option<Params>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleBalanceRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleBalanceResponse {
     #[prost(message, repeated, tag = "1")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleLockedAmountRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleLockedAmountResponse {
     #[prost(message, repeated, tag = "1")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountUnlockableCoinsRequest {
     #[prost(string, tag = "1")]
     pub owner: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountUnlockableCoinsResponse {
     #[prost(message, repeated, tag = "1")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountUnlockingCoinsRequest {
     #[prost(string, tag = "1")]
     pub owner: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountUnlockingCoinsResponse {
     #[prost(message, repeated, tag = "1")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedCoinsRequest {
     #[prost(string, tag = "1")]
     pub owner: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedCoinsResponse {
     #[prost(message, repeated, tag = "1")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedPastTimeRequest {
     #[prost(string, tag = "1")]
@@ -196,13 +170,11 @@ pub struct AccountLockedPastTimeRequest {
     #[prost(message, optional, tag = "2")]
     pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedPastTimeResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedPastTimeNotUnlockingOnlyRequest {
     #[prost(string, tag = "1")]
@@ -210,13 +182,11 @@ pub struct AccountLockedPastTimeNotUnlockingOnlyRequest {
     #[prost(message, optional, tag = "2")]
     pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedPastTimeNotUnlockingOnlyResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountUnlockedBeforeTimeRequest {
     #[prost(string, tag = "1")]
@@ -224,13 +194,11 @@ pub struct AccountUnlockedBeforeTimeRequest {
     #[prost(message, optional, tag = "2")]
     pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountUnlockedBeforeTimeResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedPastTimeDenomRequest {
     #[prost(string, tag = "1")]
@@ -240,13 +208,11 @@ pub struct AccountLockedPastTimeDenomRequest {
     #[prost(string, tag = "3")]
     pub denom: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedPastTimeDenomResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LockedDenomRequest {
     #[prost(string, tag = "1")]
@@ -254,70 +220,58 @@ pub struct LockedDenomRequest {
     #[prost(message, optional, tag = "2")]
     pub duration: ::core::option::Option<::prost_types::Duration>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LockedDenomResponse {
     #[prost(string, tag = "1")]
     pub amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LockedRequest {
     #[prost(uint64, tag = "1")]
     pub lock_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LockedResponse {
     #[prost(message, optional, tag = "1")]
     pub lock: ::core::option::Option<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LockRewardReceiverRequest {
     #[prost(uint64, tag = "1")]
     pub lock_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LockRewardReceiverResponse {
     #[prost(string, tag = "1")]
     pub reward_receiver: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NextLockIdRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NextLockIdResponse {
     #[prost(uint64, tag = "1")]
     pub lock_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyntheticLockupsByLockupIdRequest {
     #[prost(uint64, tag = "1")]
     pub lock_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyntheticLockupsByLockupIdResponse {
     #[prost(message, repeated, tag = "1")]
     pub synthetic_locks: ::prost::alloc::vec::Vec<SyntheticLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyntheticLockupByLockupIdRequest {
     #[prost(uint64, tag = "1")]
     pub lock_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SyntheticLockupByLockupIdResponse {
     #[prost(message, optional, tag = "1")]
     pub synthetic_lock: ::core::option::Option<SyntheticLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedLongerDurationRequest {
     #[prost(string, tag = "1")]
@@ -325,13 +279,11 @@ pub struct AccountLockedLongerDurationRequest {
     #[prost(message, optional, tag = "2")]
     pub duration: ::core::option::Option<::prost_types::Duration>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedLongerDurationResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedDurationRequest {
     #[prost(string, tag = "1")]
@@ -339,13 +291,11 @@ pub struct AccountLockedDurationRequest {
     #[prost(message, optional, tag = "2")]
     pub duration: ::core::option::Option<::prost_types::Duration>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedDurationResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedLongerDurationNotUnlockingOnlyRequest {
     #[prost(string, tag = "1")]
@@ -353,13 +303,11 @@ pub struct AccountLockedLongerDurationNotUnlockingOnlyRequest {
     #[prost(message, optional, tag = "2")]
     pub duration: ::core::option::Option<::prost_types::Duration>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedLongerDurationNotUnlockingOnlyResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedLongerDurationDenomRequest {
     #[prost(string, tag = "1")]
@@ -369,22 +317,18 @@ pub struct AccountLockedLongerDurationDenomRequest {
     #[prost(string, tag = "3")]
     pub denom: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AccountLockedLongerDurationDenomResponse {
     #[prost(message, repeated, tag = "1")]
     pub locks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct QueryParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgLockTokens {
     #[prost(string, tag = "1")]
@@ -394,25 +338,21 @@ pub struct MsgLockTokens {
     #[prost(message, repeated, tag = "3")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgLockTokensResponse {
     #[prost(uint64, tag = "1")]
     pub id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBeginUnlockingAll {
     #[prost(string, tag = "1")]
     pub owner: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBeginUnlockingAllResponse {
     #[prost(message, repeated, tag = "1")]
     pub unlocks: ::prost::alloc::vec::Vec<PeriodLock>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBeginUnlocking {
     #[prost(string, tag = "1")]
@@ -423,7 +363,6 @@ pub struct MsgBeginUnlocking {
     #[prost(message, repeated, tag = "3")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgBeginUnlockingResponse {
     #[prost(bool, tag = "1")]
@@ -433,7 +372,6 @@ pub struct MsgBeginUnlockingResponse {
 }
 /// MsgExtendLockup extends the existing lockup's duration.
 /// The new duration is longer than the original.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExtendLockup {
     #[prost(string, tag = "1")]
@@ -445,7 +383,6 @@ pub struct MsgExtendLockup {
     #[prost(message, optional, tag = "3")]
     pub duration: ::core::option::Option<::prost_types::Duration>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgExtendLockupResponse {
     #[prost(bool, tag = "1")]
@@ -453,7 +390,6 @@ pub struct MsgExtendLockupResponse {
 }
 /// MsgForceUnlock unlocks locks immediately for
 /// addresses registered via governance.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgForceUnlock {
     #[prost(string, tag = "1")]
@@ -464,13 +400,11 @@ pub struct MsgForceUnlock {
     #[prost(message, repeated, tag = "3")]
     pub coins: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgForceUnlockResponse {
     #[prost(bool, tag = "1")]
     pub success: bool,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetRewardReceiverAddress {
     #[prost(string, tag = "1")]
@@ -480,10 +414,10 @@ pub struct MsgSetRewardReceiverAddress {
     #[prost(string, tag = "3")]
     pub reward_receiver: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetRewardReceiverAddressResponse {
     #[prost(bool, tag = "1")]
     pub success: bool,
 }
+include!("osmosis.lockup.tonic.rs");
 // @@protoc_insertion_point(module)

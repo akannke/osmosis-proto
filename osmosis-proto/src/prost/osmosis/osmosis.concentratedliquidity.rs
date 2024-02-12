@@ -1,5 +1,4 @@
 // @generated
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     /// authorized_tick_spacing is an array of uint64s that represents the tick

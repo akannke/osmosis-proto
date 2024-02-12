@@ -1,5 +1,4 @@
 // @generated
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapAmountInRoute {
     #[prost(uint64, tag = "1")]
@@ -7,7 +6,6 @@ pub struct SwapAmountInRoute {
     #[prost(string, tag = "2")]
     pub token_out_denom: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapAmountOutRoute {
     #[prost(uint64, tag = "1")]
@@ -15,7 +13,6 @@ pub struct SwapAmountOutRoute {
     #[prost(string, tag = "2")]
     pub token_in_denom: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapAmountInSplitRoute {
     #[prost(message, repeated, tag = "1")]
@@ -23,7 +20,6 @@ pub struct SwapAmountInSplitRoute {
     #[prost(string, tag = "2")]
     pub token_in_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapAmountOutSplitRoute {
     #[prost(message, repeated, tag = "1")]
@@ -35,7 +31,6 @@ pub struct SwapAmountOutSplitRoute {
 /// It is used as the value of a mapping from pool id to the pool type,
 /// allowing the pool manager to know which module to route swaps to given the
 /// pool id.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModuleRoute {
     /// pool_type specifies the type of the pool
@@ -73,19 +68,8 @@ impl PoolType {
             PoolType::CosmWasm => "CosmWasm",
         }
     }
-    /// Creates an enum from field names used in the ProtoBuf definition.
-    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
-        match value {
-            "Balancer" => Some(Self::Balancer),
-            "Stableswap" => Some(Self::Stableswap),
-            "Concentrated" => Some(Self::Concentrated),
-            "CosmWasm" => Some(Self::CosmWasm),
-            _ => None,
-        }
-    }
 }
 /// ===================== MsgSwapExactAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountIn {
     #[prost(string, tag = "1")]
@@ -97,14 +81,12 @@ pub struct MsgSwapExactAmountIn {
     #[prost(string, tag = "4")]
     pub token_out_min_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountInResponse {
     #[prost(string, tag = "1")]
     pub token_out_amount: ::prost::alloc::string::String,
 }
 /// ===================== MsgSplitRouteSwapExactAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSplitRouteSwapExactAmountIn {
     #[prost(string, tag = "1")]
@@ -116,14 +98,12 @@ pub struct MsgSplitRouteSwapExactAmountIn {
     #[prost(string, tag = "4")]
     pub token_out_min_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSplitRouteSwapExactAmountInResponse {
     #[prost(string, tag = "1")]
     pub token_out_amount: ::prost::alloc::string::String,
 }
 /// ===================== MsgSwapExactAmountOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountOut {
     #[prost(string, tag = "1")]
@@ -135,14 +115,12 @@ pub struct MsgSwapExactAmountOut {
     #[prost(message, optional, tag = "4")]
     pub token_out: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSwapExactAmountOutResponse {
     #[prost(string, tag = "1")]
     pub token_in_amount: ::prost::alloc::string::String,
 }
 /// ===================== MsgSplitRouteSwapExactAmountOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSplitRouteSwapExactAmountOut {
     #[prost(string, tag = "1")]
@@ -154,14 +132,12 @@ pub struct MsgSplitRouteSwapExactAmountOut {
     #[prost(string, tag = "4")]
     pub token_in_max_amount: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSplitRouteSwapExactAmountOutResponse {
     #[prost(string, tag = "1")]
     pub token_in_amount: ::prost::alloc::string::String,
 }
 /// ===================== MsgSetDenomPairTakerFee
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetDenomPairTakerFee {
     #[prost(string, tag = "1")]
@@ -169,13 +145,11 @@ pub struct MsgSetDenomPairTakerFee {
     #[prost(message, repeated, tag = "2")]
     pub denom_pair_taker_fee: ::prost::alloc::vec::Vec<DenomPairTakerFee>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgSetDenomPairTakerFeeResponse {
     #[prost(bool, tag = "1")]
     pub success: bool,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DenomPairTakerFee {
     /// denom0 and denom1 get automatically lexigographically sorted
@@ -188,7 +162,6 @@ pub struct DenomPairTakerFee {
     pub taker_fee: ::prost::alloc::string::String,
 }
 /// Params holds parameters for the poolmanager module
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Params {
     #[prost(message, repeated, tag = "1")]
@@ -209,7 +182,6 @@ pub struct Params {
     pub authorized_quote_denoms: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// GenesisState defines the poolmanager module's genesis state.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
     /// the next_pool_id
@@ -230,7 +202,6 @@ pub struct GenesisState {
     pub denom_pair_taker_fee_store: ::prost::alloc::vec::Vec<DenomPairTakerFee>,
 }
 /// TakerFeeParams consolidates the taker fee parameters for the poolmanager.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TakerFeeParams {
     /// default_taker_fee is the fee used when creating a new pool that doesn't
@@ -279,7 +250,6 @@ pub struct TakerFeeParams {
 }
 /// TakerFeeDistributionPercentage defines what percent of the taker fee category
 /// gets distributed to the available categories.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TakerFeeDistributionPercentage {
     #[prost(string, tag = "1")]
@@ -287,7 +257,6 @@ pub struct TakerFeeDistributionPercentage {
     #[prost(string, tag = "2")]
     pub community_pool: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TakerFeesTracker {
     #[prost(message, repeated, tag = "1")]
@@ -301,7 +270,6 @@ pub struct TakerFeesTracker {
 }
 /// PoolVolume stores the KVStore entries for each pool's volume, which
 /// is used in export/import genesis.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolVolume {
     /// pool_id is the id of the pool.
@@ -313,7 +281,6 @@ pub struct PoolVolume {
 }
 /// DenomPairTakerFeeProposal is a type for adding/removing a custom taker fee(s)
 /// for one or more denom pairs.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DenomPairTakerFeeProposal {
     #[prost(string, tag = "1")]
@@ -324,17 +291,14 @@ pub struct DenomPairTakerFeeProposal {
     pub denom_pair_taker_fee: ::prost::alloc::vec::Vec<DenomPairTakerFee>,
 }
 /// =============================== Params
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ParamsResponse {
     #[prost(message, optional, tag = "1")]
     pub params: ::core::option::Option<Params>,
 }
 /// =============================== EstimateSwapExactAmountIn
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSwapExactAmountInRequest {
     #[deprecated]
@@ -345,7 +309,6 @@ pub struct EstimateSwapExactAmountInRequest {
     #[prost(message, repeated, tag = "4")]
     pub routes: ::prost::alloc::vec::Vec<SwapAmountInRoute>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSwapExactAmountInWithPrimitiveTypesRequest {
     #[deprecated]
@@ -358,7 +321,6 @@ pub struct EstimateSwapExactAmountInWithPrimitiveTypesRequest {
     #[prost(string, repeated, tag = "4")]
     pub routes_token_out_denom: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSinglePoolSwapExactAmountInRequest {
     #[prost(uint64, tag = "1")]
@@ -368,14 +330,12 @@ pub struct EstimateSinglePoolSwapExactAmountInRequest {
     #[prost(string, tag = "3")]
     pub token_out_denom: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSwapExactAmountInResponse {
     #[prost(string, tag = "1")]
     pub token_out_amount: ::prost::alloc::string::String,
 }
 /// =============================== EstimateSwapExactAmountOut
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSwapExactAmountOutRequest {
     #[deprecated]
@@ -386,7 +346,6 @@ pub struct EstimateSwapExactAmountOutRequest {
     #[prost(string, tag = "4")]
     pub token_out: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
     #[deprecated]
@@ -399,7 +358,6 @@ pub struct EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
     #[prost(string, tag = "4")]
     pub token_out: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSinglePoolSwapExactAmountOutRequest {
     #[prost(uint64, tag = "1")]
@@ -409,40 +367,33 @@ pub struct EstimateSinglePoolSwapExactAmountOutRequest {
     #[prost(string, tag = "3")]
     pub token_out: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateSwapExactAmountOutResponse {
     #[prost(string, tag = "1")]
     pub token_in_amount: ::prost::alloc::string::String,
 }
 /// =============================== NumPools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NumPoolsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NumPoolsResponse {
     #[prost(uint64, tag = "1")]
     pub num_pools: u64,
 }
 /// =============================== Pool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolResponse {
     #[prost(message, optional, tag = "1")]
     pub pool: ::core::option::Option<::prost_types::Any>,
 }
 /// =============================== AllPools
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AllPoolsRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AllPoolsResponse {
     #[prost(message, repeated, tag = "1")]
@@ -450,13 +401,11 @@ pub struct AllPoolsResponse {
 }
 /// =======================================================
 /// ListPoolsByDenomRequest
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListPoolsByDenomRequest {
     #[prost(string, tag = "1")]
     pub denom: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListPoolsByDenomResponse {
     #[prost(message, repeated, tag = "1")]
@@ -465,7 +414,6 @@ pub struct ListPoolsByDenomResponse {
 /// ==========================================================
 /// SpotPriceRequest defines the gRPC request structure for a SpotPrice
 /// query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpotPriceRequest {
     #[prost(uint64, tag = "1")]
@@ -477,7 +425,6 @@ pub struct SpotPriceRequest {
 }
 /// SpotPriceResponse defines the gRPC response structure for a SpotPrice
 /// query.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpotPriceResponse {
     /// String of the Dec. Ex) 10.203uatom
@@ -485,43 +432,36 @@ pub struct SpotPriceResponse {
     pub spot_price: ::prost::alloc::string::String,
 }
 /// =============================== TotalPoolLiquidity
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TotalPoolLiquidityRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TotalPoolLiquidityResponse {
     #[prost(message, repeated, tag = "1")]
     pub liquidity: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== TotalLiquidity
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TotalLiquidityRequest {}
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TotalLiquidityResponse {
     #[prost(message, repeated, tag = "1")]
     pub liquidity: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== TotalVolumeForPool
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TotalVolumeForPoolRequest {
     #[prost(uint64, tag = "1")]
     pub pool_id: u64,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TotalVolumeForPoolResponse {
     #[prost(message, repeated, tag = "1")]
     pub volume: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
 /// =============================== TradingPairTakerFee
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TradingPairTakerFeeRequest {
     #[prost(string, tag = "1")]
@@ -529,7 +469,6 @@ pub struct TradingPairTakerFeeRequest {
     #[prost(string, tag = "2")]
     pub denom_1: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TradingPairTakerFeeResponse {
     #[prost(string, tag = "1")]
@@ -540,7 +479,6 @@ pub struct TradingPairTakerFeeResponse {
 /// EstimateTradeBasedOnPriceImpactRequest represents a request to estimate a
 /// trade for Balancer/StableSwap/Concentrated liquidity pool types based on the
 /// given parameters.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateTradeBasedOnPriceImpactRequest {
     /// from_coin is the total amount of tokens that the user wants to sell.
@@ -568,7 +506,6 @@ pub struct EstimateTradeBasedOnPriceImpactRequest {
 /// for an estimated trade based on price impact. If a trade fails to be
 /// estimated the response would be 0,0 for input_coin and output_coin and will
 /// not error.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EstimateTradeBasedOnPriceImpactResponse {
     /// input_coin is the actual input amount that would be tradeable
@@ -580,10 +517,10 @@ pub struct EstimateTradeBasedOnPriceImpactResponse {
     #[prost(message, optional, tag = "2")]
     pub output_coin: ::core::option::Option<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TrackedVolume {
     #[prost(message, repeated, tag = "1")]
     pub amount: ::prost::alloc::vec::Vec<::cosmos_sdk_proto::cosmos::base::v1beta1::Coin>,
 }
+include!("osmosis.poolmanager.v1beta1.tonic.rs");
 // @@protoc_insertion_point(module)
